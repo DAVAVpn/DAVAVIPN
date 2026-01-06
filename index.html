@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Davavi VPN | Private Access</title>
+    <title>DAVAVIPN | Private Access</title>
     <style>
         :root {
             --bg-color: #0a0f0d;
@@ -36,7 +36,7 @@
             text-align: center;
         }
 
-        h1 { font-size: 26px; margin: 10px 0; color: white; }
+        h1 { font-size: 28px; margin: 10px 0; color: white; letter-spacing: 2px; }
         .desc { color: var(--text-dim); font-size: 14px; margin-bottom: 25px; }
 
         .btn-copy {
@@ -106,6 +106,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
+            width: 100%;
         }
         .btn-donate:hover { background: #1db954; color: black; }
 
@@ -115,7 +116,7 @@
 <body>
 
 <div class="card">
-    <h1>Davavi VPN</h1>
+    <h1>DAVAVIPN</h1>
     <p class="desc">Твой личный безопасный интернет</p>
 
     <div id="vpnKey">vless://02c96700-8461-44b9-bdfa-0572343b5db9@5.129.238.111:443?type=tcp&encryption=none&security=reality&pbk=pdfJ48URQJz1iofF0PyeB1DDIqVto7VPcrz0DuA1bSA&fp=chrome&sni=google.com&sid=12&spx=%2F#MyVPN-ykopj9bg</div>
@@ -163,7 +164,7 @@
         const btn = document.querySelector('.btn-donate');
         navigator.clipboard.writeText(cardNumber).then(() => {
             const oldText = btn.innerText;
-            btn.innerText = 'НОМЕР СКОПИРОВАН!';
+            btn.innerText = 'НОМЕР КАРТЫ СКОПИРОВАН!';
             setTimeout(() => {
                 btn.innerText = oldText;
             }, 2000);
