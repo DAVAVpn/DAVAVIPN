@@ -21,105 +21,97 @@
             color: var(--text-main);
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            padding: 20px;
             margin: 0;
         }
 
         .card {
             background: var(--card-bg);
             width: 100%;
-            max-width: 380px;
-            padding: 40px 25px;
+            max-width: 400px;
+            padding: 30px 20px;
             border-radius: 28px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             border: 1px solid var(--border);
             text-align: center;
         }
 
-        .icon-box {
-            width: 70px;
-            height: 70px;
-            background: rgba(29, 185, 84, 0.1);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: var(--primary-green);
-            font-size: 30px;
-        }
+        h1 { font-size: 26px; margin: 10px 0; color: white; }
+        .desc { color: var(--text-dim); font-size: 14px; margin-bottom: 25px; }
 
-        h1 {
-            font-size: 24px;
-            margin: 0 0 10px;
-            letter-spacing: 0.5px;
-        }
-
-        .desc {
-            font-size: 14px;
-            color: var(--text-dim);
-            line-height: 1.5;
-            margin-bottom: 30px;
-        }
-
+        /* Кнопка ключа */
         .btn-copy {
             background: var(--primary-green);
-            color: #ffffff;
+            color: white;
             border: none;
             width: 100%;
-            padding: 16px;
-            border-radius: 14px;
+            padding: 18px;
+            border-radius: 16px;
             font-size: 16px;
-            font-weight: 700;
+            font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(29, 185, 84, 0.2);
-            margin-bottom: 35px;
+            transition: 0.3s;
+            margin-bottom: 30px;
         }
+        .btn-copy:hover { background: var(--accent-green); transform: translateY(-2px); }
 
-        .btn-copy:hover {
-            background: var(--accent-green);
-            transform: translateY(-2px);
-        }
-
-        .btn-copy:active {
-            transform: translateY(0);
-        }
-
-        .store-header {
-            font-size: 11px;
+        /* Инструкция */
+        .section-title {
+            text-align: left;
+            font-size: 12px;
             text-transform: uppercase;
-            color: var(--text-dim);
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+            color: var(--primary-green);
+            margin: 20px 0 10px 5px;
+        }
+        .instruction-box {
+            text-align: left;
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-main);
+            border: 1px solid var(--border);
         }
 
-        .store-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .store-item {
+        /* Кнопки приложений */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+        .item {
             background: #19231e;
             border: 1px solid var(--border);
             color: white;
             padding: 12px;
             border-radius: 12px;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            transition: 0.2s;
+            gap: 5px;
         }
 
-        .store-item:hover {
-            border-color: var(--primary-green);
-            background: #1d2b24;
+        /* Оплата */
+        .donate-box {
+            margin-top: 30px;
+            padding: 15px;
+            border-radius: 15px;
+            background: linear-gradient(145deg, #121a16, #1a2620);
+            border: 1px solid #2d4036;
         }
+        .btn-donate {
+            display: inline-block;
+            margin-top: 10px;
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            border: 1px solid #ffcc00;
+            padding: 8px 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .btn-donate:hover { background: #ffcc00; color: black; }
 
         #vpnKey { display: none; }
     </style>
@@ -127,22 +119,30 @@
 <body>
 
 <div class="card">
-    <div class="icon-box">🛡️</div>
     <h1>Davavi VPN</h1>
-    <p class="desc">Ваш персональный сервер.<br>Нажмите кнопку, чтобы скопировать ключ доступа.</p>
+    <p class="desc">Безопасный доступ в одно нажатие</p>
 
     <div id="vpnKey">vless://02c96700-8461-44b9-bdfa-0572343b5db9@5.129.238.111:443?type=tcp&encryption=none&security=reality&pbk=pdfJ48URQJz1iofF0PyeB1DDIqVto7VPcrz0DuA1bSA&fp=chrome&sni=google.com&sid=12&spx=%2F#MyVPN-ykopj9bg</div>
     
     <button class="btn-copy" onclick="copyKey()">СКОПИРОВАТЬ КЛЮЧ</button>
 
-    <div class="store-header">Приложения</div>
-    <div class="store-grid">
-        <a href="https://play.google.com/store/apps/details?id=com.v2raytun" class="store-item" target="_blank">
-            <span>🤖</span> Android
-        </a>
-        <a href="https://apps.apple.com/ru/app/v2box-v2ray-client/id6446814690" class="store-item" target="_blank">
-            <span>🍎</span> iOS
-        </a>
+    <div class="section-title">Инструкция</div>
+    <div class="instruction-box">
+        1. Скачайте приложение под ваше устройство ниже.<br>
+        2. Скопируйте ключ (большая зеленая кнопка).<br>
+        3. В приложении нажмите <b>"+"</b> или <b>"Добавить"</b>.<br>
+        4. Выберите <b>"Импорт из буфера обмена"</b>.
+    </div>
+
+    <div class="section-title">Приложения</div>
+    <div class="grid">
+        <a href="https://play.google.com/store/apps/details?id=com.v2raytun" class="item" target="_blank">🤖 Android</a>
+        <a href="https://apps.apple.com/ru/app/v2box-v2ray-client/id6446814690" class="item" target="_blank">🍎 iOS</a>
+    </div>
+
+    <div class="donate-box">
+        <div style="font-size: 12px; color: var(--text-dim);">Поддержать работу сервера</div>
+        <a href="#" class="btn-donate">Поддержать проект</a>
     </div>
 </div>
 
@@ -150,14 +150,12 @@
     function copyKey() {
         const text = document.getElementById('vpnKey').innerText;
         const btn = document.querySelector('.btn-copy');
-        
         navigator.clipboard.writeText(text).then(() => {
-            const originalText = btn.innerText;
-            btn.innerText = 'СКОПИРОВАНО!';
+            const oldText = btn.innerText;
+            btn.innerText = 'КЛЮЧ В БУФЕРЕ!';
             btn.style.background = '#2ecc71';
-            
             setTimeout(() => {
-                btn.innerText = originalText;
+                btn.innerText = oldText;
                 btn.style.background = '#1db954';
             }, 2000);
         });
