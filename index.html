@@ -10,6 +10,7 @@
             --card-bg: #121a16;
             --primary-green: #1db954;
             --accent-green: #2ecc71;
+            --tg-blue: #24A1DE;
             --text-main: #e0e0e0;
             --text-dim: #a0a0a0;
             --border: #1f2d26;
@@ -50,9 +51,28 @@
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         .btn-copy:hover { background: var(--accent-green); transform: translateY(-2px); }
+
+        .btn-tg {
+            background: rgba(36, 161, 222, 0.1);
+            color: var(--tg-blue);
+            border: 1px solid var(--tg-blue);
+            width: 100%;
+            padding: 14px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            transition: 0.3s;
+        }
+        .btn-tg:hover { background: var(--tg-blue); color: white; }
 
         .section-title {
             text-align: left;
@@ -123,12 +143,16 @@
     
     <button class="btn-copy" onclick="copyKey()">СКОПИРОВАТЬ КЛЮЧ</button>
 
+    <a href="https://t.me/DAVAVIPN" class="btn-tg" target="_blank">
+        🔹 ПЕРЕЙТИ В КАНАЛ (ИНФО)
+    </a>
+
     <div class="section-title">Инструкция</div>
     <div class="instruction-box">
-        1. Установи приложение из списка ниже.<br>
-        2. Скопируй ключ кнопкой выше.<br>
-        3. В приложении нажми <b>"+"</b> (или "Добавить").<br>
-        4. Выбери <b>"Импорт из буфера обмена"</b>.
+        1. <b>Обязательно</b> подпишись на канал выше.<br>
+        2. Установи приложение из списка ниже.<br>
+        3. Скопируй ключ кнопкой выше.<br>
+        4. В приложении нажми <b>"+"</b> -> <b>"Импорт из буфера"</b>.
     </div>
 
     <div class="section-title">Приложения</div>
