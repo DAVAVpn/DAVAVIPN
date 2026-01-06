@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -6,90 +6,18 @@
     <title>DAVAVIPN PREMIUM</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        :root {
-            --gold: #ffd700;
-            --dark-bg: #0a0a0a;
-            --card-bg: #141414;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--dark-bg);
-            color: white;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .container {
-            width: 90%;
-            max-width: 400px;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
-            text-align: center;
-        }
-        h1 {
-            color: var(--gold);
-            font-size: 28px;
-            margin-bottom: 5px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .status-badge {
-            background: rgba(255, 215, 0, 0.1);
-            color: var(--gold);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            display: inline-block;
-            margin-bottom: 25px;
-            border: 1px solid var(--gold);
-        }
-        .instruction {
-            color: #888;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        .main-btn {
-            background: linear-gradient(45deg, #ffd700, #b8860b);
-            color: black;
-            border: none;
-            padding: 18px;
-            width: 100%;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            transition: transform 0.2s;
-            margin-bottom: 20px;
-        }
-        .main-btn:active {
-            transform: scale(0.96);
-        }
-        .app-links {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .app-btn {
-            background: #222;
-            color: #ccc;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 12px;
-            border: 1px solid #333;
-        }
-        .footer-text {
-            margin-top: 25px;
-            font-size: 11px;
-            color: #555;
-        }
+        :root { --gold: #ffd700; --dark-bg: #0a0a0a; --card-bg: #141414; }
+        body { font-family: -apple-system, sans-serif; background-color: var(--dark-bg); color: white; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .container { width: 90%; max-width: 400px; background: var(--card-bg); padding: 30px; border-radius: 30px; border: 1px solid rgba(255, 215, 0, 0.3); text-align: center; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        h1 { color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin: 0 0 5px 0; font-size: 24px; }
+        .status-badge { background: rgba(255, 215, 0, 0.1); color: var(--gold); padding: 5px 15px; border-radius: 20px; font-size: 12px; display: inline-block; margin-bottom: 25px; border: 1px solid var(--gold); }
+        .main-btn { background: linear-gradient(45deg, #ffd700, #b8860b); color: black; border: none; padding: 18px; width: 100%; border-radius: 15px; font-weight: bold; font-size: 16px; cursor: pointer; margin-bottom: 25px; transition: 0.2s; }
+        .main-btn:active { transform: scale(0.98); }
+        .section-title { font-size: 14px; color: #888; margin-bottom: 15px; text-transform: uppercase; }
+        .app-links { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .app-btn { background: #1a1a1a; color: #fff; text-decoration: none; padding: 15px 5px; border-radius: 12px; font-size: 11px; border: 1px solid #333; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.3s; }
+        .app-btn:active { background: #333; }
+        .app-btn b { color: var(--gold); font-size: 13px; margin-bottom: 4px; }
     </style>
 </head>
 <body>
@@ -97,29 +25,33 @@
         <h1>DAVAVIPN</h1>
         <div class="status-badge">PREMIUM СЕРВЕР: АМСТЕРДАМ</div>
         
-        <p class="instruction">Нажмите на кнопку ниже, чтобы скопировать ваш персональный ключ доступа</p>
-        
         <button class="main-btn" onclick="copyKey()">СКОПИРОВАТЬ КЛЮЧ</button>
 
+        <div class="section-title">Установить приложение:</div>
         <div class="app-links">
-            <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" class="app-btn">Android App</a>
-            <a href="https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690" class="app-btn">iOS App</a>
+            <a href="https://apps.apple.com/ru/app/v2box-v2ray-client/id6446814690" class="app-btn" target="_blank">
+                <b>v2Box</b> для iOS
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" class="app-btn" target="_blank">
+                <b>v2rayTun</b> для Android
+            </a>
         </div>
-
-        <div class="footer-text">Powered by V2Ray Technology</div>
     </div>
 
     <script>
         let tg = window.Telegram.WebApp;
-        tg.expand(); // Раскрыть на весь экран
+        tg.expand();
 
         function copyKey() {
-            // Сюда потом вставишь свой реальный vless/ss ключ
-            const dummyKey = "vless://your-id@5.129.238.111:443?encryption=none&security=reality#DAVAVIPN_USER";
+            // Твой ключ доступа
+            const vpnKey = "vless://user-id@5.129.238.111:443?encryption=none&security=reality#DAVAVIPN";
             
-            navigator.clipboard.writeText(dummyKey).then(() => {
-                alert("Ключ успешно скопирован! Вставьте его в приложение.");
-                tg.close(); // Закрыть мини-апп после копирования
+            navigator.clipboard.writeText(vpnKey).then(() => {
+                tg.showPopup({
+                    title: 'Готово!',
+                    message: 'Ключ скопирован. Вставьте его в ваше приложение.',
+                    buttons: [{type: 'ok'}]
+                });
             });
         }
     </script>
