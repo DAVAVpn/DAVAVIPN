@@ -3,55 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Davavi VPN Setup</title>
+    <title>Davavi VPN | Private Access</title>
     <style>
-        body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; padding: 20px; margin: 0; }
-        .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); max-width: 400px; width: 100%; text-align: center; }
-        h1 { color: #2d3436; margin-bottom: 10px; }
-        p { color: #636e72; font-size: 0.95rem; line-height: 1.5; }
-        .key-box { background: #f1f2f6; border: 2px dashed #dfe6e9; padding: 15px; border-radius: 12px; margin: 20px 0; word-break: break-all; font-family: monospace; font-size: 0.75rem; color: #2d3436; position: relative; }
-        .btn-copy { background: #00b894; color: white; border: none; padding: 12px 20px; border-radius: 10px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; margin-bottom: 25px; }
-        .btn-copy:active { transform: scale(0.98); }
-        .divider { height: 1px; background: #eee; margin: 20px 0; }
-        .app-links { text-align: left; }
-        .app-item { display: flex; align-items: center; text-decoration: none; color: #0984e3; margin-bottom: 12px; font-weight: 500; }
-        .app-item span { background: #e1f5fe; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin-right: 10px; font-size: 0.8rem; }
+        :root {
+            --bg-color: #0a0f0d;
+            --card-bg: #121a16;
+            --primary-green: #1db954;
+            --accent-green: #2ecc71;
+            --text-main: #e0e0e0;
+            --text-dim: #a0a0a0;
+            --border: #1f2d26;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 380px;
+            padding: 40px 25px;
+            border-radius: 28px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: rgba(29, 185, 84, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-green);
+            font-size: 30px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 0 0 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .desc {
+            font-size: 14px;
+            color: var(--text-dim);
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .btn-copy {
+            background: var(--primary-green);
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(29, 185, 84, 0.2);
+            margin-bottom: 35px;
+        }
+
+        .btn-copy:hover {
+            background: var(--accent-green);
+            transform: translateY(-2px);
+        }
+
+        .btn-copy:active {
+            transform: translateY(0);
+        }
+
+        .store-header {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .store-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .store-item {
+            background: #19231e;
+            border: 1px solid var(--border);
+            color: white;
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .store-item:hover {
+            border-color: var(--primary-green);
+            background: #1d2b24;
+        }
+
+        #vpnKey { display: none; }
     </style>
 </head>
 <body>
 
-<div class="container">
+<div class="card">
+    <div class="icon-box">🛡️</div>
     <h1>Davavi VPN</h1>
-    <p>Твой личный сервер для свободного интернета.</p>
+    <p class="desc">Ваш персональный сервер.<br>Нажмите кнопку, чтобы скопировать ключ доступа.</p>
 
-    <div class="key-box" id="vpnLink">vless://02c96700-8461-44b9-bdfa-0572343b5db9@5.129.238.111:443?type=tcp&encryption=none&security=reality&pbk=pdfJ48URQJz1iofF0PyeB1DDIqVto7VPcrz0DuA1bSA&fp=chrome&sni=google.com&sid=12&spx=%2F#MyVPN-ykopj9bg</div>
+    <div id="vpnKey">vless://02c96700-8461-44b9-bdfa-0572343b5db9@5.129.238.111:443?type=tcp&encryption=none&security=reality&pbk=pdfJ48URQJz1iofF0PyeB1DDIqVto7VPcrz0DuA1bSA&fp=chrome&sni=google.com&sid=12&spx=%2F#MyVPN-ykopj9bg</div>
     
     <button class="btn-copy" onclick="copyKey()">СКОПИРОВАТЬ КЛЮЧ</button>
 
-    <div class="divider"></div>
-
-    <div class="app-links">
-        <p style="font-weight: bold; color: #2d3436;">1. Установи приложение:</p>
-        <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" class="app-item" target="_blank">
-            <span>🤖</span> Android: v2rayNG
+    <div class="store-header">Приложения</div>
+    <div class="store-grid">
+        <a href="https://play.google.com/store/apps/details?id=com.v2raytun" class="store-item" target="_blank">
+            <span>🤖</span> Android
         </a>
-        <a href="https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690" class="app-item" target="_blank">
-            <span>🍎</span> iOS: V2Box
+        <a href="https://apps.apple.com/ru/app/v2box-v2ray-client/id6446814690" class="store-item" target="_blank">
+            <span>🍎</span> iOS
         </a>
-        <a href="https://github.com/2dust/v2rayN/releases" class="app-item" target="_blank">
-            <span>💻</span> Windows: v2rayN
-        </a>
-        
-        <p style="font-weight: bold; color: #2d3436; margin-top: 20px;">2. Как подключить:</p>
-        <p style="font-size: 0.85rem;">Скопируй ключ кнопкой выше, в приложении нажми значок <b>+</b> и выбери <b>"Импорт из буфера обмена"</b>.</p>
     </div>
 </div>
 
 <script>
     function copyKey() {
-        const text = document.getElementById('vpnLink').innerText;
+        const text = document.getElementById('vpnKey').innerText;
+        const btn = document.querySelector('.btn-copy');
+        
         navigator.clipboard.writeText(text).then(() => {
-            alert('Ключ скопирован! Теперь вставь его в приложение.');
+            const originalText = btn.innerText;
+            btn.innerText = 'СКОПИРОВАНО!';
+            btn.style.background = '#2ecc71';
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.background = '#1db954';
+            }, 2000);
         });
     }
 </script>
