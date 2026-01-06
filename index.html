@@ -2,66 +2,32 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DAVAVIPN PREMIUM</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Личный VPN</title>
     <style>
-        :root { --gold: #ffd700; --dark-bg: #0a0a0a; --card-bg: #141414; }
-        body { font-family: -apple-system, sans-serif; background-color: var(--dark-bg); color: white; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .container { width: 90%; max-width: 400px; background: var(--card-bg); padding: 25px; border-radius: 30px; border: 1px solid rgba(255, 215, 0, 0.3); text-align: center; margin: 20px 0; }
-        h1 { color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin: 0 0 5px 0; font-size: 22px; }
-        .status-badge { background: rgba(255, 215, 0, 0.1); color: var(--gold); padding: 4px 12px; border-radius: 20px; font-size: 11px; display: inline-block; margin-bottom: 20px; border: 1px solid var(--gold); }
-        .main-btn { background: linear-gradient(45deg, #ffd700, #b8860b); color: black; border: none; padding: 16px; width: 100%; border-radius: 15px; font-weight: bold; font-size: 16px; cursor: pointer; margin-bottom: 20px; }
-        
-        .section-title { font-size: 13px; color: var(--gold); margin-bottom: 10px; text-transform: uppercase; font-weight: bold; opacity: 0.8; }
-        
-        .instruction-box { background: rgba(255, 255, 255, 0.03); border-radius: 15px; padding: 15px; text-align: left; margin-bottom: 20px; border: 1px border: 1px solid #222; }
-        .step { font-size: 13px; margin-bottom: 8px; display: flex; align-items: flex-start; }
-        .step-num { background: var(--gold); color: black; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; margin-right: 10px; flex-shrink: 0; margin-top: 2px; }
-
-        .app-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .app-btn { background: #1a1a1a; color: #fff; text-decoration: none; padding: 12px 5px; border-radius: 12px; font-size: 11px; border: 1px solid #333; display: flex; flex-direction: column; align-items: center; }
-        .app-btn b { color: var(--gold); font-size: 12px; margin-bottom: 4px; }
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f0f2f5; }
+        .card { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; max-width: 90%; }
+        h1 { color: #1a73e8; }
+        .vpn-link { background: #e8f0fe; padding: 10px; border-radius: 5px; word-break: break-all; font-size: 0.8rem; margin: 15px 0; border: 1px solid #1a73e8; }
+        .btn { background: #1a73e8; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; font-weight: bold; }
+        .btn:hover { background: #1557b0; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>DAVAVIPN</h1>
-        <div class="status-badge">PREMIUM ACCESS</div>
+    <div class="card">
+        <h1>Твой VPN готов!</h1>
+        <p>Нажми на кнопку ниже, чтобы скопировать ключ, или импортируй его в приложение.</p>
         
-        <button class="main-btn" onclick="copyKey()">1. СКОПИРОВАТЬ КЛЮЧ</button>
-
-        <div class="section-title">2. Инструкция:</div>
-        <div class="instruction-box">
-            <div class="step"><div class="step-num">1</div> <span>Установите приложение ниже (v2Box или v2rayTun).</span></div>
-            <div class="step"><div class="step-num">2</div> <span>Нажмите кнопку <b>«+»</b> в приложении.</span></div>
-            <div class="step"><div class="step-num">3</div> <span>Выберите <b>«Import from Clipboard»</b> (из буфера).</span></div>
-            <div class="step"><div class="step-num">4</div> <span>Нажмите на появившийся профиль и кнопку <b>«Connect»</b>.</span></div>
-        </div>
-
-        <div class="section-title">3. Скачать приложение:</div>
-        <div class="app-links">
-            <a href="https://apps.apple.com/ru/app/v2box-v2ray-client/id6446814690" class="app-btn" target="_blank">
-                <b>v2Box</b> для iOS
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" class="app-btn" target="_blank">
-                <b>v2rayTun</b> для Android
-            </a>
-        </div>
+        <div class="vpn-link" id="vpnConfig">vless://02c96700-8461-44b9-bdfa-0572343b5db9@5.129.238.111:443?type=tcp&encryption=none&security=reality&pbk=pdfJ48URQJz1iofF0PyeB1DDIqVto7VPcrz0DuA1bSA&fp=chrome&sni=google.com&sid=12&spx=%2F#MyVPN-ykopj9bg</div>
+        
+        <button class="btn" onclick="copyConfig()">Скопировать ключ</button>
     </div>
 
     <script>
-        let tg = window.Telegram.WebApp;
-        tg.expand();
-
-        function copyKey() {
-            const vpnKey = "vless://user-id@5.129.238.111:443?encryption=none&security=reality#DAVAVIPN";
-            navigator.clipboard.writeText(vpnKey).then(() => {
-                tg.showPopup({
-                    title: 'Успешно!',
-                    message: 'Ключ в буфере обмена. Теперь следуйте инструкции ниже.',
-                    buttons: [{type: 'ok'}]
-                });
+        function copyConfig() {
+            const configText = document.getElementById('vpnConfig').innerText;
+            navigator.clipboard.writeText(configText).then(() => {
+                alert('Ключ скопирован в буфер обмена!');
             });
         }
     </script>
