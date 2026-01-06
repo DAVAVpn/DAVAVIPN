@@ -10,7 +10,6 @@
             --card-bg: #121a16;
             --primary-green: #1db954;
             --accent-green: #2ecc71;
-            --tg-blue: #24A1DE;
             --text-main: #e0e0e0;
             --text-dim: #a0a0a0;
             --border: #1f2d26;
@@ -40,39 +39,33 @@
         h1 { font-size: 28px; margin: 10px 0; color: white; letter-spacing: 2px; }
         .desc { color: var(--text-dim); font-size: 14px; margin-bottom: 25px; }
 
-        .btn-copy {
-            background: var(--primary-green);
-            color: white;
-            border: none;
+        /* Общий стиль для всех главных кнопок */
+        .btn-action {
+            display: block;
             width: 100%;
-            padding: 18px;
+            background: none;
+            color: var(--primary-green);
+            border: 1.5px solid var(--primary-green);
+            padding: 16px;
             border-radius: 16px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
-            margin-bottom: 20px;
-        }
-        .btn-copy:hover { background: var(--accent-green); transform: translateY(-2px); }
-
-        .btn-tg {
-            background: rgba(36, 161, 222, 0.1);
-            color: var(--tg-blue);
-            border: 1px solid var(--tg-blue);
-            width: 100%;
-            padding: 14px;
-            border-radius: 16px;
-            font-size: 14px;
-            font-weight: bold;
+            transition: all 0.3s ease;
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 30px;
-            transition: 0.3s;
+            margin-bottom: 15px;
+            box-sizing: border-box;
         }
-        .btn-tg:hover { background: var(--tg-blue); color: white; }
+
+        .btn-action:hover {
+            background: var(--primary-green);
+            color: black;
+            transform: translateY(-2px);
+        }
+
+        .btn-action:active {
+            transform: translateY(0);
+        }
 
         .section-title {
             text-align: left;
@@ -82,6 +75,7 @@
             color: var(--primary-green);
             margin: 20px 0 10px 5px;
         }
+
         .instruction-box {
             text-align: left;
             background: rgba(255,255,255,0.03);
@@ -91,8 +85,10 @@
             line-height: 1.6;
             color: var(--text-main);
             border: 1px solid var(--border);
+            margin-bottom: 20px;
         }
 
+        /* Маленькие кнопки приложений */
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
         .item {
             background: #19231e;
@@ -106,29 +102,17 @@
             align-items: center;
             justify-content: center;
             gap: 5px;
+            transition: 0.2s;
         }
+        .item:hover { border-color: var(--primary-green); }
 
         .donate-box {
             margin-top: 30px;
             padding: 20px;
             border-radius: 20px;
-            background: rgba(29, 185, 84, 0.05);
-            border: 1px dashed #2d4036;
+            background: rgba(29, 185, 84, 0.03);
+            border: 1px dashed var(--border);
         }
-        .btn-donate {
-            display: inline-block;
-            margin-top: 15px;
-            color: #1db954;
-            background: none;
-            border: 1px solid #1db954;
-            padding: 10px 25px;
-            border-radius: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
-        }
-        .btn-donate:hover { background: #1db954; color: black; }
 
         #vpnKey { display: none; }
     </style>
@@ -141,57 +125,49 @@
 
     <div id="vpnKey">vless://02c96700-8461-44b9-bdfa-0572343b5db9@5.129.238.111:443?type=tcp&encryption=none&security=reality&pbk=pdfJ48URQJz1iofF0PyeB1DDIqVto7VPcrz0DuA1bSA&fp=chrome&sni=google.com&sid=12&spx=%2F#MyVPN-ykopj9bg</div>
     
-    <button class="btn-copy" onclick="copyKey()">СКОПИРОВАТЬ КЛЮЧ</button>
+    <button class="btn-action" id="copyBtn" onclick="copyKey()">СКОПИРОВАТЬ КЛЮЧ</button>
 
-    <a href="https://t.me/DAVAVIPN" class="btn-tg" target="_blank">
-        🔹 ПЕРЕЙТИ В КАНАЛ (ИНФО)
-    </a>
+    <a href="https://t.me/DAVAVIPN" class="btn-action" target="_blank">ПЕРЕЙТИ В КАНАЛ</a>
 
     <div class="section-title">Инструкция</div>
     <div class="instruction-box">
-        1. <b>Обязательно</b> подпишись на канал выше.<br>
-        2. Установи приложение из списка ниже.<br>
+        1. <b>Обязательно</b> подпишись на канал.<br>
+        2. Установи приложение <b>v2rayTun</b> ниже.<br>
         3. Скопируй ключ кнопкой выше.<br>
         4. В приложении нажми <b>"+"</b> -> <b>"Импорт из буфера"</b>.
     </div>
 
-    <div class="section-title">Приложения</div>
+    <div class="section-title">Скачать v2rayTun</div>
     <div class="grid">
-        <a href="https://play.google.com/store/apps/details?id=com.v2raytun" class="item" target="_blank">🤖 Android</a>
-        <a href="https://apps.apple.com/ru/app/v2box-v2ray-client/id6446814690" class="item" target="_blank">🍎 iOS</a>
+        <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" class="item" target="_blank">🤖 Android</a>
+        <a href="https://apps.apple.com/ru/app/v2raytun/id6476628951" class="item" target="_blank">🍎 iOS</a>
     </div>
 
     <div class="donate-box">
-        <div style="font-size: 12px; color: var(--text-dim);">Поддержать аренду сервера:</div>
-        <button class="btn-donate" onclick="copyCard()">Поддержать проект</button>
-        <div style="font-size: 10px; color: #444; margin-top: 8px;">Карта: 5599 0021 2717 8178</div>
+        <div style="font-size: 12px; color: var(--text-dim); margin-bottom: 5px;">Поддержать аренду сервера:</div>
+        <button class="btn-action" id="donateBtn" style="margin-bottom: 10px; padding: 12px;" onclick="copyCard()">ПОДДЕРЖАТЬ ПРОЕКТ</button>
+        <div style="font-size: 10px; color: #444;">Карта: 5599 0021 2717 8178</div>
     </div>
 </div>
 
 <script>
     function copyKey() {
         const text = document.getElementById('vpnKey').innerText;
-        const btn = document.querySelector('.btn-copy');
+        const btn = document.getElementById('copyBtn');
         navigator.clipboard.writeText(text).then(() => {
             const oldText = btn.innerText;
             btn.innerText = 'ГОТОВО, ВСТАВЛЯЙ!';
-            btn.style.background = '#2ecc71';
-            setTimeout(() => {
-                btn.innerText = oldText;
-                btn.style.background = '#1db954';
-            }, 2000);
+            setTimeout(() => { btn.innerText = oldText; }, 2000);
         });
     }
 
     function copyCard() {
         const cardNumber = '5599002127178178';
-        const btn = document.querySelector('.btn-donate');
+        const btn = document.getElementById('donateBtn');
         navigator.clipboard.writeText(cardNumber).then(() => {
             const oldText = btn.innerText;
-            btn.innerText = 'НОМЕР КАРТЫ СКОПИРОВАН!';
-            setTimeout(() => {
-                btn.innerText = oldText;
-            }, 2000);
+            btn.innerText = 'НОМЕР СКОПИРОВАН!';
+            setTimeout(() => { btn.innerText = oldText; }, 2000);
         });
     }
 </script>
