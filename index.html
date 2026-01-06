@@ -3,33 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой Личный VPN</title>
+    <title>Davavi VPN Setup</title>
     <style>
-        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f0f2f5; }
-        .card { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; max-width: 90%; }
-        h1 { color: #1a73e8; }
-        .vpn-link { background: #e8f0fe; padding: 10px; border-radius: 5px; word-break: break-all; font-size: 0.8rem; margin: 15px 0; border: 1px solid #1a73e8; }
-        .btn { background: #1a73e8; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; font-weight: bold; }
-        .btn:hover { background: #1557b0; }
+        body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; padding: 20px; margin: 0; }
+        .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); max-width: 400px; width: 100%; text-align: center; }
+        h1 { color: #2d3436; margin-bottom: 10px; }
+        p { color: #636e72; font-size: 0.95rem; line-height: 1.5; }
+        .key-box { background: #f1f2f6; border: 2px dashed #dfe6e9; padding: 15px; border-radius: 12px; margin: 20px 0; word-break: break-all; font-family: monospace; font-size: 0.75rem; color: #2d3436; position: relative; }
+        .btn-copy { background: #00b894; color: white; border: none; padding: 12px 20px; border-radius: 10px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; margin-bottom: 25px; }
+        .btn-copy:active { transform: scale(0.98); }
+        .divider { height: 1px; background: #eee; margin: 20px 0; }
+        .app-links { text-align: left; }
+        .app-item { display: flex; align-items: center; text-decoration: none; color: #0984e3; margin-bottom: 12px; font-weight: 500; }
+        .app-item span { background: #e1f5fe; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin-right: 10px; font-size: 0.8rem; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Твой VPN готов!</h1>
-        <p>Нажми на кнопку ниже, чтобы скопировать ключ, или импортируй его в приложение.</p>
-        
-        <div class="vpn-link" id="vpnConfig">vless://02c96700-8461-44b9-bdfa-0572343b5db9@5.129.238.111:443?type=tcp&encryption=none&security=reality&pbk=pdfJ48URQJz1iofF0PyeB1DDIqVto7VPcrz0DuA1bSA&fp=chrome&sni=google.com&sid=12&spx=%2F#MyVPN-ykopj9bg</div>
-        
-        <button class="btn" onclick="copyConfig()">Скопировать ключ</button>
-    </div>
 
-    <script>
-        function copyConfig() {
-            const configText = document.getElementById('vpnConfig').innerText;
-            navigator.clipboard.writeText(configText).then(() => {
-                alert('Ключ скопирован в буфер обмена!');
-            });
-        }
-    </script>
+<div class="container">
+    <h1>Davavi VPN</h1>
+    <p>Твой личный сервер для свободного интернета.</p>
+
+    <div class="key-box" id="vpnLink">vless://02c96700-8461-44b9-bdfa-0572343b5db9@5.129.238.111:443?type=tcp&encryption=none&security=reality&pbk=pdfJ48URQJz1iofF0PyeB1DDIqVto7VPcrz0DuA1bSA&fp=chrome&sni=google.com&sid=12&spx=%2F#MyVPN-ykopj9bg</div>
+    
+    <button class="btn-copy" onclick="copyKey()">СКОПИРОВАТЬ КЛЮЧ</button>
+
+    <div class="divider"></div>
+
+    <div class="app-links">
+        <p style="font-weight: bold; color: #2d3436;">1. Установи приложение:</p>
+        <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" class="app-item" target="_blank">
+            <span>🤖</span> Android: v2rayNG
+        </a>
+        <a href="https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690" class="app-item" target="_blank">
+            <span>🍎</span> iOS: V2Box
+        </a>
+        <a href="https://github.com/2dust/v2rayN/releases" class="app-item" target="_blank">
+            <span>💻</span> Windows: v2rayN
+        </a>
+        
+        <p style="font-weight: bold; color: #2d3436; margin-top: 20px;">2. Как подключить:</p>
+        <p style="font-size: 0.85rem;">Скопируй ключ кнопкой выше, в приложении нажми значок <b>+</b> и выбери <b>"Импорт из буфера обмена"</b>.</p>
+    </div>
+</div>
+
+<script>
+    function copyKey() {
+        const text = document.getElementById('vpnLink').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Ключ скопирован! Теперь вставь его в приложение.');
+        });
+    }
+</script>
+
 </body>
 </html>
