@@ -11,18 +11,15 @@
         body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 15px; display: flex; justify-content: center; }
         .card { background: var(--card); width: 100%; max-width: 400px; border-radius: 30px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         .tabs { display: flex; background: rgba(0,0,0,0.4); padding: 8px; gap: 5px; }
-        .tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; font-size: 10px; font-weight: bold; color: var(--dim); border-radius: 12px; }
+        .tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; font-size: 10px; font-weight: bold; color: var(--dim); border-radius: 12px; transition: 0.2s; }
         .tab.active { color: white; background: var(--green); }
         .content { padding: 25px; display: none; }
         .content.active { display: block; animation: fadeIn 0.3s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
-        .btn { display: block; width: 100%; padding: 16px; border: 1.5px solid var(--green); color: var(--green); border-radius: 18px; font-weight: bold; text-decoration: none; text-align: center; margin-bottom: 12px; box-sizing: border-box; cursor: pointer; background: none; }
+        .btn { display: block; width: 100%; padding: 16px; border: 1.5px solid var(--green); color: var(--green); border-radius: 18px; font-weight: bold; text-decoration: none; text-align: center; margin-bottom: 12px; box-sizing: border-box; cursor: pointer; background: none; transition: 0.3s; }
         .btn-fill { background: var(--green); color: black; border: none; }
-        
-        /* Стили для оплаты */
-        .pay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-        .pay-btn { padding: 12px; font-size: 11px; border-color: #333; color: white; opacity: 0.8; }
+        .btn:active { transform: scale(0.98); opacity: 0.8; }
         
         input, textarea { width: 100%; background: #0a0f0d; border: 1px solid var(--border); border-radius: 12px; color: white; padding: 12px; margin-bottom: 10px; box-sizing: border-box; font-family: inherit; }
         #vpnKey { display: none; }
@@ -35,53 +32,48 @@
 <div class="card">
     <div class="tabs">
         <div class="tab active" onclick="openTab(event, 'home')">ГЛАВНАЯ</div>
-        <div class="tab" onclick="openTab(event, 'pay')">ОПЛАТА</div>
+        <div class="tab" onclick="openTab(event, 'pay')">ПОДДЕРЖКА</div>
         <div class="tab" onclick="openTab(event, 'rev')">ОТЗЫВЫ</div>
     </div>
 
     <div id="home" class="content active">
-        <div class="status"><span class="dot"></span> СЕРВЕР АКТИВЕН</div>
-        <h1 style="text-align: center; margin: 0 0 25px 0;">DAVAVIPN</h1>
+        <div class="status"><span class="dot"></span> СЕРВЕР ONLINE</div>
+        <h1 style="text-align: center; margin: 0 0 25px 0; letter-spacing: 2px;">DAVAVIPN</h1>
         <div id="vpnKey">vless://02c96700-8461-44b9-bdfa-0572343b5db9@5.129.238.111:443?type=tcp&encryption=none&security=reality&pbk=pdfJ48URQJz1iofF0PyeB1DDIqVto7VPcrz0DuA1bSA&fp=chrome&sni=google.com&sid=12&spx=%2F#MyVPN-ykopj9bg</div>
         <button class="btn btn-fill" id="copyBtn" onclick="copyKey()">СКОПИРОВАТЬ КЛЮЧ</button>
-        <div style="margin-top: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-            <a href="market://details?id=com.v2raytun.android" class="btn" style="font-size: 11px;">ANDROID APP</a>
-            <a href="https://apps.apple.com/ru/app/v2raytun/id6476628951" class="btn" style="font-size: 11px;">IOS APP</a>
+        
+        <div style="margin-top: 25px;">
+            <p style="text-align:center; font-size:11px; color:var(--dim); margin-bottom:10px;">СКАЧАТЬ ПРИЛОЖЕНИЕ</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" target="_blank" class="btn" style="font-size: 11px;">ANDROID</a>
+                <a href="https://apps.apple.com/ru/app/v2raytun/id6476628951" target="_blank" class="btn" style="font-size: 11px;">IOS</a>
+            </div>
         </div>
-        <p style="text-align: center; font-size: 10px; color: var(--dim);">Если ссылка на Android не открылась, скачайте "v2rayTun" в Play Market</p>
+        <a href="https://t.me/DAVAVIPN" class="btn" style="margin-top:10px; border-color:#333; color:#666;">TELEGRAM КАНАЛ</a>
     </div>
 
     <div id="pay" class="content">
         <h2 style="text-align: center; margin-top: 0;">ПОДДЕРЖКА</h2>
-        <p style="font-size: 13px; color: var(--dim); text-align: center; margin-bottom: 20px;">Для продления подписки или доната выберите удобный способ:</p>
-        
-        <div class="pay-grid">
-            <a href="https://www.sberbank.ru/ru/person/dl/jc?linkname=iLp6tK6M1B1V2z3A" class="btn pay-btn">SberPay</a>
-            <a href="https://qr.tinkoff.ru/123456789" class="btn pay-btn">Т-Банк (СБП)</a>
+        <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px; border: 1px solid var(--border); text-align: center;">
+            <div style="font-size: 11px; color: var(--dim); margin-bottom: 10px;">ПЕРЕВОД НА КАРТУ (РФ)</div>
+            <div style="font-weight: bold; font-size: 16px; margin-bottom: 20px; color: var(--green);">5599 0021 2717 8178</div>
+            <button class="btn btn-fill" style="margin:0;" onclick="copyCard()">СКОПИРОВАТЬ НОМЕР</button>
         </div>
-
-        <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 15px; border: 1px dashed var(--border);">
-            <div style="font-size: 11px; color: var(--dim); margin-bottom: 5px;">Номер карты (РФ):</div>
-            <div style="font-weight: bold; font-size: 14px; margin-bottom: 10px;">5599 0021 2717 8178</div>
-            <button class="btn" style="margin:0; padding: 10px; font-size: 12px;" onclick="copyCard()">КОПИРОВАТЬ КАРТУ</button>
-        </div>
-        
-        <a href="https://t.me/O_004" class="btn btn-fill" style="margin-top: 20px;">ПОДТВЕРДИТЬ ОПЛАТУ</a>
+        <p style="text-align: center; font-size: 11px; color: var(--dim); margin-top: 20px;">Для получения VIP статуса напишите админу:</p>
+        <a href="https://t.me/O_004" class="btn">ПОДТВЕРДИТЬ (@O_004)</a>
     </div>
 
     <div id="rev" class="content">
-        <h2 style="text-align: center; margin-top: 0;">ОТЗЫВ</h2>
-        <p style="font-size: 12px; color: var(--dim); text-align: center;">Ваш отзыв придет лично админу</p>
-        <input type="text" id="revName" placeholder="Ваше имя/ник">
-        <textarea id="revMsg" rows="4" placeholder="Текст отзыва..."></textarea>
+        <h2 style="text-align: center; margin-top: 0;">ОТЗЫВЫ</h2>
+        <input type="text" id="revName" placeholder="Ваш ник/имя">
+        <textarea id="revMsg" rows="5" placeholder="Ваш отзыв о работе VPN..."></textarea>
         <button class="btn btn-fill" id="sendRevBtn" onclick="sendToTelegram()">ОТПРАВИТЬ АДМИНУ</button>
     </div>
 </div>
 
 <script>
-    // ТВОИ ДАННЫЕ ДЛЯ ОТЗЫВОВ
-    const TG_TOKEN = "ТУТ_ТВОЙ_ТОКЕН_ОТ_BOTFATHER";
-    const TG_CHAT_ID = "ТУТ_ТВОЙ_ID_ЦИФРАМИ";
+    const TG_TOKEN = "8540307974:AAFMv7AlfxpPPqSn57VbKyjuxvbwuV7ZneM";
+    const TG_CHAT_ID = "5345919063"; 
 
     function openTab(evt, name) {
         let c = document.getElementsByClassName("content");
@@ -94,7 +86,9 @@
 
     function copyKey() {
         navigator.clipboard.writeText(document.getElementById('vpnKey').innerText);
-        alert('Ключ скопирован!');
+        const b = document.getElementById('copyBtn');
+        b.innerText = 'СКОПИРОВАНО!';
+        setTimeout(() => b.innerText = 'СКОПИРОВАТЬ КЛЮЧ', 2000);
     }
 
     function copyCard() {
@@ -107,21 +101,21 @@
         const msg = document.getElementById('revMsg').value;
         const btn = document.getElementById('sendRevBtn');
 
-        if(!name || !msg) return alert('Заполните поля!');
+        if(!name || !msg) return alert('Заполните все поля!');
 
         btn.innerText = "ОТПРАВКА...";
         btn.disabled = true;
 
-        const text = `🚀 НОВЫЙ ОТЗЫВ!\nОт: ${name}\nСообщение: ${msg}`;
+        const text = `⭐️ НОВЫЙ ОТЗЫВ!\n👤 От: ${name}\n💬 Текст: ${msg}`;
         const url = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage?chat_id=${TG_CHAT_ID}&text=${encodeURIComponent(text)}`;
 
         try {
             await fetch(url);
-            alert('Отзыв успешно доставлен админу!');
+            alert('Спасибо! Ваш отзыв отправлен админу @O_004');
             document.getElementById('revName').value = '';
             document.getElementById('revMsg').value = '';
         } catch (e) {
-            alert('Ошибка отправки. Напишите в личку @O_004');
+            alert('Ошибка! Бот не запущен или нет сети.');
         } finally {
             btn.innerText = "ОТПРАВИТЬ АДМИНУ";
             btn.disabled = false;
