@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DAVAVIPN | Premium</title>
+    <title>DAVAVIPN | Premium Access</title>
     <style>
         :root {
             --bg-color: #0a0f0d;
@@ -39,7 +39,6 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        /* Навигация */
         .tabs {
             display: flex;
             background: rgba(0,0,0,0.4);
@@ -68,7 +67,6 @@
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Кнопки */
         .btn-main {
             display: block; width: 100%; padding: 16px;
             background: none; border: 1.5px solid var(--primary-green);
@@ -79,23 +77,19 @@
         }
         .btn-main:active { background: var(--primary-green); color: black; }
 
-        /* Статус */
         .status {
             text-align: center; font-size: 11px; color: var(--accent-green);
             margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 6px;
         }
         .dot { width: 7px; height: 7px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green); }
 
-        /* FAQ */
-        .faq-item { background: rgba(255,255,255,0.02); border-radius: 12px; margin-bottom: 8px; border: 1px solid var(--border); }
-        .faq-q { padding: 12px; cursor: pointer; font-size: 13px; display: flex; justify-content: space-between; }
-        .faq-a { padding: 0 12px 12px; font-size: 12px; color: var(--text-dim); display: none; }
-
-        /* Отзывы */
         .rev-card { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 15px; margin-bottom: 10px; border-left: 3px solid var(--primary-green); }
         .stars-select { display: flex; justify-content: center; gap: 8px; margin-bottom: 15px; font-size: 28px; cursor: pointer; }
         .stars-select span { color: #222; }
-        .stars-select span.active { color: #f1c40f; }
+
+        .faq-item { background: rgba(255,255,255,0.02); border-radius: 12px; margin-bottom: 8px; border: 1px solid var(--border); }
+        .faq-q { padding: 12px; cursor: pointer; font-size: 13px; display: flex; justify-content: space-between; }
+        .faq-a { padding: 0 12px 12px; font-size: 12px; color: var(--text-dim); display: none; }
 
         #vpnKey { display: none; }
     </style>
@@ -127,15 +121,16 @@
 
     <div id="support" class="content">
         <h2 style="text-align: center; margin-top: 0;">ПОДДЕРЖКА</h2>
-        <p style="font-size: 12px; color: var(--text-dim); text-align: center; margin-bottom: 20px;">Помогите нам оплачивать сервер в Германии</p>
+        <p style="font-size: 12px; color: var(--text-dim); text-align: center; margin-bottom: 20px;">Помогите нам оплачивать сервер и развивать проект.</p>
         
         <div class="rev-card">
-            <div style="font-weight: bold; color: var(--primary-green); margin-bottom: 5px;">Развитие проекта</div>
+            <div style="font-weight: bold; color: var(--primary-green); margin-bottom: 5px;">Донат на сервер</div>
             <div style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">Любая сумма</div>
-            <button class="btn-main" id="donateBtn" style="margin: 0;" onclick="copyCard()">КОПИРОВАТЬ КАРТУ</button>
+            <button class="btn-main" id="donateBtn" style="margin: 0;" onclick="copyCard()">СКОПИРОВАТЬ КАРТУ</button>
         </div>
-        <p style="text-align: center; font-size: 10px; color: #444;">Карта: 5599 0021 2717 8178</p>
-        <a href="https://t.me/DAVAVIPN" class="btn-main" style="margin-top: 20px; border-color: #333;">СВЯЗЬ С АДМИНОМ</a>
+        <p style="text-align: center; font-size: 10px; color: #444; margin-bottom: 20px;">Карта: 5599 0021 2717 8178</p>
+        
+        <a href="https://t.me/O_004" class="btn-main" style="border-color: #333;">НАПИСАТЬ АДМИНУ</a>
     </div>
 
     <div id="reviews" class="content">
@@ -143,12 +138,12 @@
         <div class="stars-select" id="starSelect">
             <span onclick="setRate(1)">★</span><span onclick="setRate(2)">★</span><span onclick="setRate(3)">★</span><span onclick="setRate(4)">★</span><span onclick="setRate(5)">★</span>
         </div>
-        <textarea id="revText" style="width:100%; background: #0a0f0d; border:1px solid var(--border); border-radius:12px; color:white; padding:12px; margin-bottom:15px; box-sizing: border-box;" placeholder="Напишите отзыв..."></textarea>
+        <textarea id="revText" style="width:100%; background: #0a0f0d; border:1px solid var(--border); border-radius:12px; color:white; padding:12px; margin-bottom:15px; box-sizing: border-box; font-family: inherit;" placeholder="Ваш отзыв..."></textarea>
         <button class="btn-main" onclick="sendRev()">ОТПРАВИТЬ</button>
 
         <div class="rev-card" style="margin-top: 20px;">
             <div style="color: #f1c40f; font-size: 12px;">★★★★★</div>
-            <div style="font-size: 13px; margin-top: 5px;">"Все работает идеально, спасибо за VPN!"</div>
+            <div style="font-size: 13px; margin-top: 5px;">"Все летает, спасибо @O_004 за стабильный VPN!"</div>
         </div>
     </div>
 
@@ -159,9 +154,10 @@
             <div class="faq-a">Убедитесь, что вы скопировали актуальный ключ и у вас есть интернет. Попробуйте перезагрузить приложение v2rayTun.</div>
         </div>
         <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">Где брать новые ключи? <span>+</span></div>
-            <div class="faq-a">Все обновления ключей и важные новости публикуются в нашем Telegram канале.</div>
+            <div class="faq-q" onclick="toggleFaq(this)">Влияет ли на батарею? <span>+</span></div>
+            <div class="faq-a">Наш протокол (VLESS Reality) потребляет минимум энергии, так как он максимально легкий для процессора смартфона.</div>
         </div>
+        <a href="https://t.me/O_004" class="btn-main" style="margin-top: 20px; border-color: #333;">ЗАДАТЬ СВОЙ ВОПРОС</a>
     </div>
 </div>
 
@@ -194,8 +190,9 @@
         const text = document.getElementById('vpnKey').innerText;
         const btn = document.getElementById('copyBtn');
         navigator.clipboard.writeText(text).then(() => {
+            const old = btn.innerText;
             btn.innerText = 'СКОПИРОВАНО!';
-            setTimeout(() => btn.innerText = 'СКОПИРОВАТЬ КЛЮЧ', 2000);
+            setTimeout(() => btn.innerText = old, 2000);
         });
     }
 
@@ -203,14 +200,15 @@
         const card = '5599002127178178';
         const btn = document.getElementById('donateBtn');
         navigator.clipboard.writeText(card).then(() => {
-            btn.innerText = 'НОМЕР СКОПИРОВАН!';
-            setTimeout(() => btn.innerText = 'КОПИРОВАТЬ КАРТУ', 2000);
+            const old = btn.innerText;
+            btn.innerText = 'ГОТОВО, ВСТАВЛЯЙ!';
+            setTimeout(() => btn.innerText = old, 2000);
         });
     }
 
     function sendRev() {
-        if(!rate) return alert('Поставьте оценку!');
-        alert('Отзыв отправлен на проверку!');
+        if(!rate) return alert('Поставьте оценку звездочками!');
+        alert('Спасибо! Отзыв будет опубликован после проверки.');
         document.getElementById('revText').value = '';
         setRate(0);
     }
