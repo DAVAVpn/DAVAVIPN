@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAVAVIPN | Premium</title>
+    <title>DAVAVIPN | Community</title>
     <style>
         :root {
             --bg-color: #0a0f0d;
@@ -35,18 +35,18 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
-        /* Навигация (Вкладки) */
+        /* Навигация */
         .tabs {
             display: flex;
-            background: rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.3);
             border-bottom: 1px solid var(--border);
         }
         .tab {
             flex: 1;
-            padding: 15px;
+            padding: 18px 10px;
             text-align: center;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-dim);
@@ -58,52 +58,61 @@
             background: rgba(29, 185, 84, 0.05);
         }
 
-        .content { padding: 25px; display: none; }
+        .content { padding: 25px; display: none; animation: fadeIn 0.4s; }
         .content.active { display: block; }
 
-        /* Стили компонентов */
-        h1 { font-size: 24px; text-align: center; margin-top: 0; }
-        .stats-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .stat-card {
-            background: rgba(255,255,255,0.03);
-            padding: 15px;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid var(--border);
-        }
-        .stat-val { color: var(--primary-green); font-size: 20px; font-weight: bold; }
-        .stat-label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
+        h1 { font-size: 24px; text-align: center; margin-top: 0; letter-spacing: 1px; }
+
+        /* Общие кнопки */
         .btn-main {
             display: block; width: 100%; padding: 16px;
             background: none; border: 1.5px solid var(--primary-green);
             color: var(--primary-green); border-radius: 15px;
             font-weight: bold; cursor: pointer; text-decoration: none;
-            text-align: center; margin-bottom: 10px; transition: 0.3s;
-            box-sizing: border-box;
+            text-align: center; margin-bottom: 12px; transition: 0.3s;
+            box-sizing: border-box; font-size: 14px;
         }
-        .btn-main:hover { background: var(--primary-green); color: black; }
+        .btn-main:hover { background: var(--primary-green); color: black; transform: translateY(-2px); }
 
-        .price-card {
+        /* Секция Поддержки */
+        .support-card {
+            background: rgba(255,255,255,0.02);
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 20px;
             margin-bottom: 15px;
-            background: linear-gradient(145deg, #131c18, #0e1411);
-            text-align: center;
+            transition: 0.3s;
+        }
+        .support-card:hover { border-color: var(--primary-green); }
+        .support-title { color: var(--primary-green); font-weight: bold; margin-bottom: 5px; }
+        .support-price { font-size: 22px; font-weight: bold; margin-bottom: 15px; }
+
+        /* Секция Отзывов */
+        .rating-stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .star { color: #333; transition: 0.3s; }
+        .star.selected { color: #f1c40f; }
+
+        .review-input {
+            width: 100%; background: #0a0f0d; border: 1px solid var(--border);
+            border-radius: 12px; color: white; padding: 12px; box-sizing: border-box;
+            margin-bottom: 15px; resize: none; font-family: inherit;
         }
 
-        /* Отзывы */
-        .star-rating { color: #f1c40f; margin-bottom: 10px; font-size: 20px; }
-        .review-form textarea {
-            width: 100%; background: #0a0f0d; border: 1px solid var(--border);
-            border-radius: 10px; color: white; padding: 10px; box-sizing: border-box;
-            margin-bottom: 10px; resize: none;
+        .review-item {
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--primary-green);
         }
 
         #vpnKey { display: none; }
@@ -114,72 +123,86 @@
 <div class="card">
     <div class="tabs">
         <div class="tab active" onclick="openTab(event, 'home')">Главная</div>
-        <div class="tab" onclick="openTab(event, 'pay')">Подписка</div>
+        <div class="tab" onclick="openTab(event, 'support')">Поддержка</div>
         <div class="tab" onclick="openTab(event, 'reviews')">Отзывы</div>
     </div>
 
     <div id="home" class="content active">
         <h1>DAVAVIPN</h1>
+        <p style="text-align:center; color: var(--text-dim); font-size: 13px; margin-top:-10px;">Личный узел • Безопасность • Скорость</p>
         
-        <div class="stats-box">
-            <div class="stat-card">
-                <div class="stat-val">124</div>
-                <div class="stat-label">Пользователей</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0;">
+            <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 15px; text-align: center; border: 1px solid var(--border);">
+                <div style="color: var(--primary-green); font-size: 20px; font-weight: bold;">124</div>
+                <div style="font-size: 9px; color: var(--text-dim); text-transform: uppercase;">В сети</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-val">99.9%</div>
-                <div class="stat-label">Uptime</div>
+            <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 15px; text-align: center; border: 1px solid var(--border);">
+                <div style="color: var(--primary-green); font-size: 20px; font-weight: bold;">∞</div>
+                <div style="font-size: 9px; color: var(--text-dim); text-transform: uppercase;">Трафик</div>
             </div>
         </div>
 
         <div id="vpnKey">vless://02c96700-8461-44b9-bdfa-0572343b5db9@5.129.238.111:443?type=tcp&encryption=none&security=reality&pbk=pdfJ48URQJz1iofF0PyeB1DDIqVto7VPcrz0DuA1bSA&fp=chrome&sni=google.com&sid=12&spx=%2F#MyVPN-ykopj9bg</div>
         
         <button class="btn-main" id="copyBtn" onclick="copyKey()">СКОПИРОВАТЬ КЛЮЧ</button>
-        <a href="https://t.me/DAVAVIPN" class="btn-main" target="_blank">КАНАЛ ПРОЕКТА</a>
+        <a href="https://t.me/DAVAVIPN" class="btn-main">КАНАЛ В TELEGRAM</a>
 
-        <p style="font-size: 12px; color: var(--text-dim);">Установите v2rayTun:</p>
-        <div style="display: flex; gap: 10px;">
-            <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" class="btn-main" style="font-size: 12px; padding: 10px;">Android</a>
-            <a href="https://apps.apple.com/ru/app/v2raytun/id6476628951" class="btn-main" style="font-size: 12px; padding: 10px;">iOS</a>
+        <div style="margin-top: 25px;">
+            <p style="font-size: 11px; color: var(--primary-green); text-transform: uppercase; letter-spacing: 1px;">Скачать клиент:</p>
+            <div style="display: flex; gap: 10px;">
+                <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" class="btn-main" style="padding: 12px; font-size: 12px;">Android</a>
+                <a href="https://apps.apple.com/ru/app/v2raytun/id6476628951" class="btn-main" style="padding: 12px; font-size: 12px;">iOS</a>
+            </div>
         </div>
     </div>
 
-    <div id="pay" class="content">
+    <div id="support" class="content">
         <h1>ПОДДЕРЖКА</h1>
-        <p style="text-align: center; color: var(--text-dim); font-size: 13px;">Выберите вариант поддержки сервера</p>
+        <p style="text-align: center; color: var(--text-dim); font-size: 13px; margin-bottom: 25px;">Ваши донаты помогают серверу работать быстрее и стабильнее.</p>
         
-        <div class="price-card">
-            <h3 style="margin: 0; color: var(--primary-green);">Месяц доступа</h3>
-            <div style="font-size: 24px; margin: 10px 0;">199 ₽</div>
-            <button class="btn-main" onclick="window.open('https://t.me/@O_004')">Оплатить</button>
+        <div class="support-card">
+            <div class="support-title">☕ На кофе админу</div>
+            <div class="support-price">149 ₽</div>
+            <button class="btn-main" style="margin-bottom:0;" onclick="window.open('https://t.me/твой_ник')">ПОДДЕРЖАТЬ</button>
         </div>
 
-        <div class="price-card">
-            <h3 style="margin: 0; color: #f1c40f;">Навсегда</h3>
-            <div style="font-size: 24px; margin: 10px 0;">999 ₽</div>
-            <button class="btn-main" onclick="window.open('https://t.me/твой_ник')">Купить</button>
+        <div class="support-card">
+            <div class="support-title">🚀 Аренда сервера (1 мес)</div>
+            <div class="support-price">299 ₽</div>
+            <button class="btn-main" style="margin-bottom:0;" onclick="window.open('https://t.me/твой_ник')">ВНЕСТИ ВКЛАД</button>
         </div>
+
+        <p style="text-align: center; font-size: 11px; color: var(--text-dim);">После перевода напишите мне в личку для получения VIP-статуса в канале.</p>
     </div>
 
     <div id="reviews" class="content">
         <h1>ОТЗЫВЫ</h1>
-        <div class="review-form">
-            <div class="star-rating">★★★★★</div>
-            <textarea id="reviewText" placeholder="Напишите ваш отзыв..."></textarea>
-            <button class="btn-main" onclick="sendReview()">Оставить отзыв</button>
-        </div>
         
-        <div id="reviewsList" style="margin-top: 20px;">
-            <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 10px; margin-bottom: 10px;">
-                <div style="color: #f1c40f; font-size: 12px;">★★★★★</div>
-                <div style="font-size: 13px;">"Все летает, порт 443 открыл и забыл о проблемах!"</div>
-                <div style="font-size: 10px; color: var(--text-dim); margin-top: 5px;">— Admin</div>
+        <div style="background: rgba(29, 185, 84, 0.03); padding: 20px; border-radius: 20px; border: 1px solid var(--border); margin-bottom: 25px;">
+            <div class="rating-stars" id="starContainer">
+                <span class="star" onclick="setRating(1)">★</span>
+                <span class="star" onclick="setRating(2)">★</span>
+                <span class="star" onclick="setRating(3)">★</span>
+                <span class="star" onclick="setRating(4)">★</span>
+                <span class="star" onclick="setRating(5)">★</span>
+            </div>
+            <textarea id="reviewText" class="review-input" rows="3" placeholder="Как вам скорость работы?"></textarea>
+            <button class="btn-main" style="margin-bottom:0;" onclick="sendReview()">ОТПРАВИТЬ ОТЗЫВ</button>
+        </div>
+
+        <div id="reviewsList">
+            <div class="review-item">
+                <div style="color: #f1c40f; font-size: 12px; margin-bottom: 5px;">★★★★★</div>
+                <div style="font-size: 13px; font-style: italic;">"Наконец-то нашел нормальный VLESS. На iOS летает без разрывов!"</div>
+                <div style="font-size: 10px; color: var(--text-dim); margin-top: 8px;">— Максим К.</div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+    let currentRating = 0;
+
     function openTab(evt, tabName) {
         var i, content, tabs;
         content = document.getElementsByClassName("content");
@@ -190,21 +213,36 @@
         evt.currentTarget.className += " active";
     }
 
+    function setRating(n) {
+        currentRating = n;
+        const stars = document.querySelectorAll('.star');
+        stars.forEach((star, index) => {
+            star.classList.toggle('selected', index < n);
+        });
+    }
+
     function copyKey() {
         const text = document.getElementById('vpnKey').innerText;
         const btn = document.getElementById('copyBtn');
         navigator.clipboard.writeText(text).then(() => {
-            btn.innerText = 'ГОТОВО!';
-            setTimeout(() => { btn.innerText = 'СКОПИРОВАТЬ КЛЮЧ'; }, 2000);
+            const oldText = btn.innerText;
+            btn.innerText = 'СКОПИРОВАНО!';
+            btn.style.borderColor = '#2ecc71';
+            setTimeout(() => { 
+                btn.innerText = oldText; 
+                btn.style.borderColor = '#1db954';
+            }, 2000);
         });
     }
 
     function sendReview() {
         const text = document.getElementById('reviewText').value;
-        if(text) {
-            alert('Отзыв отправлен на модерацию! Спасибо!');
-            document.getElementById('reviewText').value = '';
-        }
+        if(currentRating === 0) return alert('Пожалуйста, выберите оценку!');
+        if(!text) return alert('Напишите пару слов о сервисе!');
+        
+        alert('Спасибо! Ваш отзыв отправлен на модерацию админу.');
+        document.getElementById('reviewText').value = '';
+        setRating(0);
     }
 </script>
 
