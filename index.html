@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAVAVIPN | Premium Access</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DAVAVIPN | Premium</title>
     <style>
         :root {
             --bg-color: #0a0f0d;
@@ -13,37 +13,37 @@
             --text-main: #e0e0e0;
             --text-dim: #a0a0a0;
             --border: #1f2d26;
-            --shadow: 0 20px 50px rgba(0,0,0,0.7);
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
             display: flex;
             justify-content: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 15px;
+            box-sizing: border-box;
         }
 
         .card {
             background: var(--card-bg);
             width: 100%;
-            max-width: 450px;
-            border-radius: 35px;
+            max-width: 400px;
+            border-radius: 30px;
             border: 1px solid var(--border);
             overflow: hidden;
-            box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
         /* Навигация */
         .tabs {
             display: flex;
             background: rgba(0,0,0,0.4);
-            padding: 10px;
+            padding: 8px;
             gap: 5px;
         }
         .tab {
@@ -54,97 +54,48 @@
             font-size: 10px;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
             color: var(--text-dim);
-            border-radius: 15px;
-            transition: 0.3s;
+            border-radius: 12px;
+            transition: 0.2s;
         }
         .tab.active {
             color: white;
             background: var(--primary-green);
         }
 
-        .content { padding: 30px 25px; display: none; animation: slideUp 0.4s ease; }
-        .content.active { display: block; }
+        .content { padding: 25px; display: none; }
+        .content.active { display: block; animation: fadeIn 0.3s ease; }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Статус Сервера */
-        .status-bar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: rgba(29, 185, 84, 0.1);
-            padding: 8px;
-            border-radius: 50px;
-            width: fit-content;
-            margin: 0 auto 20px;
-            font-size: 11px;
-            color: var(--accent-green);
-            border: 1px solid rgba(29, 185, 84, 0.2);
-        }
-        .dot {
-            width: 8px; height: 8px;
-            background: var(--accent-green);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-green);
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.5; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* Кнопки */
         .btn-main {
-            display: block; width: 100%; padding: 18px;
+            display: block; width: 100%; padding: 16px;
             background: none; border: 1.5px solid var(--primary-green);
-            color: var(--primary-green); border-radius: 20px;
-            font-weight: 900; cursor: pointer; text-decoration: none;
-            text-align: center; margin-bottom: 15px; transition: 0.3s;
+            color: var(--primary-green); border-radius: 18px;
+            font-weight: bold; cursor: pointer; text-decoration: none;
+            text-align: center; margin-bottom: 12px; transition: 0.3s;
             box-sizing: border-box; font-size: 14px;
         }
-        .btn-main:hover { background: var(--primary-green); color: black; box-shadow: 0 0 20px rgba(29, 185, 84, 0.3); }
+        .btn-main:active { background: var(--primary-green); color: black; }
 
-        /* FAQ Аккордеон */
-        .faq-item {
-            background: rgba(255,255,255,0.02);
-            border-radius: 15px;
-            margin-bottom: 10px;
-            border: 1px solid var(--border);
-            overflow: hidden;
+        /* Статус */
+        .status {
+            text-align: center; font-size: 11px; color: var(--accent-green);
+            margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 6px;
         }
-        .faq-question {
-            padding: 15px; cursor: pointer; font-size: 13px; font-weight: bold;
-            display: flex; justify-content: space-between;
-        }
-        .faq-answer {
-            padding: 0 15px 15px; font-size: 12px; color: var(--text-dim);
-            display: none; line-height: 1.5;
-        }
+        .dot { width: 7px; height: 7px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green); }
+
+        /* FAQ */
+        .faq-item { background: rgba(255,255,255,0.02); border-radius: 12px; margin-bottom: 8px; border: 1px solid var(--border); }
+        .faq-q { padding: 12px; cursor: pointer; font-size: 13px; display: flex; justify-content: space-between; }
+        .faq-a { padding: 0 12px 12px; font-size: 12px; color: var(--text-dim); display: none; }
 
         /* Отзывы */
-        .review-card {
-            background: #19231e; padding: 20px; border-radius: 20px;
-            margin-bottom: 15px; border-left: 4px solid var(--primary-green);
-        }
-        .review-stars { color: #f1c40f; font-size: 14px; margin-bottom: 8px; }
-
-        .rating-input-group {
-            background: #0d1411; padding: 20px; border-radius: 25px;
-            border: 1px solid var(--border); margin-bottom: 30px;
-        }
-        .star-picker {
-            display: flex; justify-content: center; gap: 8px; font-size: 30px;
-            margin-bottom: 15px; cursor: pointer;
-        }
-        .star-picker span { color: #222; transition: 0.2s; }
-        .star-picker span.active { color: #f1c40f; text-shadow: 0 0 10px rgba(241, 196, 15, 0.4); }
+        .rev-card { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 15px; margin-bottom: 10px; border-left: 3px solid var(--primary-green); }
+        .stars-select { display: flex; justify-content: center; gap: 8px; margin-bottom: 15px; font-size: 28px; cursor: pointer; }
+        .stars-select span { color: #222; }
+        .stars-select span.active { color: #f1c40f; }
 
         #vpnKey { display: none; }
     </style>
@@ -156,110 +107,112 @@
         <div class="tab active" onclick="openTab(event, 'home')">Главная</div>
         <div class="tab" onclick="openTab(event, 'support')">Поддержка</div>
         <div class="tab" onclick="openTab(event, 'reviews')">Отзывы</div>
-        <div class="tab" onclick="openTab(event, 'faq')">Помощь</div>
+        <div class="tab" onclick="openTab(event, 'faq')">FAQ</div>
     </div>
 
     <div id="home" class="content active">
-        <div class="status-bar"><span class="dot"></span> СЕРВЕР: ОНЛАЙН</div>
-        <h1 style="text-align: center; margin-bottom: 30px;">DAVAVIPN</h1>
+        <div class="status"><span class="dot"></span> СЕРВЕР АКТИВЕН</div>
+        <h1 style="text-align: center; margin: 0 0 25px 0;">DAVAVIPN</h1>
         
         <div id="vpnKey">vless://02c96700-8461-44b9-bdfa-0572343b5db9@5.129.238.111:443?type=tcp&encryption=none&security=reality&pbk=pdfJ48URQJz1iofF0PyeB1DDIqVto7VPcrz0DuA1bSA&fp=chrome&sni=google.com&sid=12&spx=%2F#MyVPN-ykopj9bg</div>
         
         <button class="btn-main" id="copyBtn" onclick="copyKey()">СКОПИРОВАТЬ КЛЮЧ</button>
-        <a href="https://t.me/DAVAVIPN" class="btn-main">ТЕЛЕГРАМ КАНАЛ</a>
+        <a href="https://t.me/DAVAVIPN" class="btn-main">КАНАЛ ПРОЕКТА</a>
 
-        <div style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-            <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" class="btn-main" style="padding: 12px; font-size: 11px; border-color: #333; color: #fff;">ANDROID</a>
-            <a href="https://apps.apple.com/ru/app/v2raytun/id6476628951" class="btn-main" style="padding: 12px; font-size: 11px; border-color: #333; color: #fff;">IOS / MAC</a>
+        <div style="margin-top: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" class="btn-main" style="font-size: 11px; padding: 12px;">ANDROID</a>
+            <a href="https://apps.apple.com/ru/app/v2raytun/id6476628951" class="btn-main" style="font-size: 11px; padding: 12px;">IOS</a>
         </div>
     </div>
 
     <div id="support" class="content">
-        <h2 style="text-align: center;">ПОДДЕРЖКА</h2>
-        <div class="review-card" style="border-left-color: #f1c40f;">
-            <div style="font-weight: bold; color: #f1c40f;">☕ Донат на развитие</div>
-            <p style="font-size: 12px; color: var(--text-dim);">Любая сумма помогает оплачивать сервер в Германии.</p>
-            <button class="btn-main" style="margin: 0; padding: 10px;" onclick="window.open('https://t.me/твой_ник')">ПОДДЕРЖАТЬ</button>
+        <h2 style="text-align: center; margin-top: 0;">ПОДДЕРЖКА</h2>
+        <p style="font-size: 12px; color: var(--text-dim); text-align: center; margin-bottom: 20px;">Помогите нам оплачивать сервер в Германии</p>
+        
+        <div class="rev-card">
+            <div style="font-weight: bold; color: var(--primary-green); margin-bottom: 5px;">Развитие проекта</div>
+            <div style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">Любая сумма</div>
+            <button class="btn-main" id="donateBtn" style="margin: 0;" onclick="copyCard()">КОПИРОВАТЬ КАРТУ</button>
         </div>
-        <div class="review-card">
-            <div style="font-weight: bold; color: var(--primary-green);">💎 VIP Статус</div>
-            <p style="font-size: 12px; color: var(--text-dim);">Доступ в закрытый чат и помощь 24/7.</p>
-            <button class="btn-main" style="margin: 0; padding: 10px;" onclick="window.open('https://t.me/твой_ник')">УЗНАТЬ ПОДРОБНЕЕ</button>
-        </div>
+        <p style="text-align: center; font-size: 10px; color: #444;">Карта: 5599 0021 2717 8178</p>
+        <a href="https://t.me/DAVAVIPN" class="btn-main" style="margin-top: 20px; border-color: #333;">СВЯЗЬ С АДМИНОМ</a>
     </div>
 
     <div id="reviews" class="content">
-        <div class="rating-input-group">
-            <div class="star-picker" id="starPicker">
-                <span onclick="setRating(1)">★</span><span onclick="setRating(2)">★</span><span onclick="setRating(3)">★</span><span onclick="setRating(4)">★</span><span onclick="setRating(5)">★</span>
-            </div>
-            <textarea id="revText" style="width:100%; background:none; border:1px solid #222; border-radius:10px; color:white; padding:10px; margin-bottom:10px;" placeholder="Ваш отзыв..."></textarea>
-            <button class="btn-main" onclick="sendReview()">ОТПРАВИТЬ</button>
+        <h2 style="text-align: center; margin-top: 0;">ОТЗЫВЫ</h2>
+        <div class="stars-select" id="starSelect">
+            <span onclick="setRate(1)">★</span><span onclick="setRate(2)">★</span><span onclick="setRate(3)">★</span><span onclick="setRate(4)">★</span><span onclick="setRate(5)">★</span>
         </div>
+        <textarea id="revText" style="width:100%; background: #0a0f0d; border:1px solid var(--border); border-radius:12px; color:white; padding:12px; margin-bottom:15px; box-sizing: border-box;" placeholder="Напишите отзыв..."></textarea>
+        <button class="btn-main" onclick="sendRev()">ОТПРАВИТЬ</button>
 
-        <div id="list">
-            <div class="review-card">
-                <div class="review-stars">★★★★★</div>
-                <div style="font-size: 13px;">"Скорость бешеная, инста грузится моментально!"</div>
-                <div style="font-size: 10px; color: var(--text-dim); margin-top: 10px;">— Alex_Vip</div>
-            </div>
+        <div class="rev-card" style="margin-top: 20px;">
+            <div style="color: #f1c40f; font-size: 12px;">★★★★★</div>
+            <div style="font-size: 13px; margin-top: 5px;">"Все работает идеально, спасибо за VPN!"</div>
         </div>
     </div>
 
     <div id="faq" class="content">
-        <h2 style="text-align: center;">FAQ</h2>
+        <h2 style="text-align: center; margin-top: 0;">ПОМОЩЬ</h2>
         <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">Что делать, если не работает? <span>+</span></div>
-            <div class="faq-answer">Проверьте, открыт ли порт 443 на вашем устройстве и обновлен ли ключ. Также попробуйте перезагрузить v2rayTun.</div>
+            <div class="faq-q" onclick="toggleFaq(this)">Не подключается? <span>+</span></div>
+            <div class="faq-a">Убедитесь, что вы скопировали актуальный ключ и у вас есть интернет. Попробуйте перезагрузить приложение v2rayTun.</div>
         </div>
         <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">Влияет ли на заряд батареи? <span>+</span></div>
-            <div class="faq-answer">Протокол VLESS Reality очень легкий и практически не расходует заряд смартфона в отличие от старых VPN.</div>
+            <div class="faq-q" onclick="toggleFaq(this)">Где брать новые ключи? <span>+</span></div>
+            <div class="faq-a">Все обновления ключей и важные новости публикуются в нашем Telegram канале.</div>
         </div>
-        <button class="btn-main" style="margin-top: 20px;" onclick="window.open('https://t.me/твой_ник')">НАПИСАТЬ В ПОДДЕРЖКУ</button>
     </div>
 </div>
 
 <script>
-    let currentRating = 0;
+    let rate = 0;
 
-    function openTab(evt, tabName) {
-        var i, content, tabs;
-        content = document.getElementsByClassName("content");
-        for (i = 0; i < content.length; i++) content[i].style.display = "none";
-        tabs = document.getElementsByClassName("tab");
-        for (i = 0; i < tabs.length; i++) tabs[i].classList.remove("active");
-        document.getElementById(tabName).style.display = "block";
+    function openTab(evt, name) {
+        let contents = document.getElementsByClassName("content");
+        for (let i = 0; i < contents.length; i++) contents[i].style.display = "none";
+        let tabs = document.getElementsByClassName("tab");
+        for (let i = 0; i < tabs.length; i++) tabs[i].classList.remove("active");
+        document.getElementById(name).style.display = "block";
         evt.currentTarget.classList.add("active");
     }
 
     function toggleFaq(el) {
-        const ans = el.nextElementSibling;
-        const isOpen = ans.style.display === "block";
-        ans.style.display = isOpen ? "none" : "block";
+        let a = el.nextElementSibling;
+        let isOpen = a.style.display === "block";
+        a.style.display = isOpen ? "none" : "block";
         el.querySelector('span').innerText = isOpen ? "+" : "-";
     }
 
-    function setRating(n) {
-        currentRating = n;
-        const stars = document.querySelectorAll('.star-picker span');
-        stars.forEach((s, i) => s.classList.toggle('active', i < n));
+    function setRate(n) {
+        rate = n;
+        let stars = document.querySelectorAll('.stars-select span');
+        stars.forEach((s, i) => s.style.color = i < n ? "#f1c40f" : "#222");
     }
 
     function copyKey() {
         const text = document.getElementById('vpnKey').innerText;
         const btn = document.getElementById('copyBtn');
         navigator.clipboard.writeText(text).then(() => {
-            btn.innerText = 'ГОТОВО К ВСТАВКЕ!';
+            btn.innerText = 'СКОПИРОВАНО!';
             setTimeout(() => btn.innerText = 'СКОПИРОВАТЬ КЛЮЧ', 2000);
         });
     }
 
-    function sendReview() {
-        if(!currentRating || !document.getElementById('revText').value) return alert('Заполните все поля!');
-        alert('Отзыв отправлен админу на проверку!');
+    function copyCard() {
+        const card = '5599002127178178';
+        const btn = document.getElementById('donateBtn');
+        navigator.clipboard.writeText(card).then(() => {
+            btn.innerText = 'НОМЕР СКОПИРОВАН!';
+            setTimeout(() => btn.innerText = 'КОПИРОВАТЬ КАРТУ', 2000);
+        });
+    }
+
+    function sendRev() {
+        if(!rate) return alert('Поставьте оценку!');
+        alert('Отзыв отправлен на проверку!');
         document.getElementById('revText').value = '';
-        setRating(0);
+        setRate(0);
     }
 </script>
 
