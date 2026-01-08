@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAVAVIPN | Private Access</title>
+    <title>DAVAVIPN | Premium</title>
     <style>
         :root {
             --bg-color: #0a0f0d;
@@ -16,102 +16,94 @@
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
+            margin: 0;
             display: flex;
             justify-content: center;
             padding: 20px;
-            margin: 0;
         }
 
         .card {
             background: var(--card-bg);
             width: 100%;
-            max-width: 400px;
-            padding: 30px 20px;
-            border-radius: 28px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            max-width: 450px;
+            border-radius: 30px;
             border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Навигация (Вкладки) */
+        .tabs {
+            display: flex;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid var(--border);
+        }
+        .tab {
+            flex: 1;
+            padding: 15px;
             text-align: center;
-        }
-
-        h1 { font-size: 28px; margin: 10px 0; color: white; letter-spacing: 2px; }
-        .desc { color: var(--text-dim); font-size: 14px; margin-bottom: 25px; }
-
-        /* Общий стиль для всех главных кнопок */
-        .btn-action {
-            display: block;
-            width: 100%;
-            background: none;
-            color: var(--primary-green);
-            border: 1.5px solid var(--primary-green);
-            padding: 16px;
-            border-radius: 16px;
-            font-size: 15px;
-            font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            margin-bottom: 15px;
-            box-sizing: border-box;
-        }
-
-        .btn-action:hover {
-            background: var(--primary-green);
-            color: black;
-            transform: translateY(-2px);
-        }
-
-        .btn-action:active {
-            transform: translateY(0);
-        }
-
-        .section-title {
-            text-align: left;
-            font-size: 11px;
+            font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+            transition: 0.3s;
+        }
+        .tab.active {
             color: var(--primary-green);
-            margin: 20px 0 10px 5px;
+            border-bottom: 2px solid var(--primary-green);
+            background: rgba(29, 185, 84, 0.05);
         }
 
-        .instruction-box {
-            text-align: left;
+        .content { padding: 25px; display: none; }
+        .content.active { display: block; }
+
+        /* Стили компонентов */
+        h1 { font-size: 24px; text-align: center; margin-top: 0; }
+        .stats-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
             background: rgba(255,255,255,0.03);
             padding: 15px;
             border-radius: 15px;
-            font-size: 13px;
-            line-height: 1.6;
-            color: var(--text-main);
+            text-align: center;
             border: 1px solid var(--border);
-            margin-bottom: 20px;
         }
+        .stat-val { color: var(--primary-green); font-size: 20px; font-weight: bold; }
+        .stat-label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; }
 
-        /* Маленькие кнопки приложений */
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .item {
-            background: #19231e;
+        .btn-main {
+            display: block; width: 100%; padding: 16px;
+            background: none; border: 1.5px solid var(--primary-green);
+            color: var(--primary-green); border-radius: 15px;
+            font-weight: bold; cursor: pointer; text-decoration: none;
+            text-align: center; margin-bottom: 10px; transition: 0.3s;
+            box-sizing: border-box;
+        }
+        .btn-main:hover { background: var(--primary-green); color: black; }
+
+        .price-card {
             border: 1px solid var(--border);
-            color: white;
-            padding: 12px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            transition: 0.2s;
-        }
-        .item:hover { border-color: var(--primary-green); }
-
-        .donate-box {
-            margin-top: 30px;
-            padding: 20px;
             border-radius: 20px;
-            background: rgba(29, 185, 84, 0.03);
-            border: 1px dashed var(--border);
+            padding: 20px;
+            margin-bottom: 15px;
+            background: linear-gradient(145deg, #131c18, #0e1411);
+            text-align: center;
+        }
+
+        /* Отзывы */
+        .star-rating { color: #f1c40f; margin-bottom: 10px; font-size: 20px; }
+        .review-form textarea {
+            width: 100%; background: #0a0f0d; border: 1px solid var(--border);
+            border-radius: 10px; color: white; padding: 10px; box-sizing: border-box;
+            margin-bottom: 10px; resize: none;
         }
 
         #vpnKey { display: none; }
@@ -120,55 +112,99 @@
 <body>
 
 <div class="card">
-    <h1>DAVAVIPN</h1>
-    <p class="desc">Твой личный безопасный интернет</p>
-
-    <div id="vpnKey">vless://02c96700-8461-44b9-bdfa-0572343b5db9@5.129.238.111:443?type=tcp&encryption=none&security=reality&pbk=pdfJ48URQJz1iofF0PyeB1DDIqVto7VPcrz0DuA1bSA&fp=chrome&sni=google.com&sid=12&spx=%2F#MyVPN-ykopj9bg</div>
-    
-    <button class="btn-action" id="copyBtn" onclick="copyKey()">СКОПИРОВАТЬ КЛЮЧ</button>
-
-    <a href="https://t.me/DAVAVIPN" class="btn-action" target="_blank">ПЕРЕЙТИ В КАНАЛ</a>
-
-    <div class="section-title">Инструкция</div>
-    <div class="instruction-box">
-        1. <b>Обязательно</b> подпишись на канал.<br>
-        2. Установи приложение <b>v2rayTun</b> ниже.<br>
-        3. Скопируй ключ кнопкой выше.<br>
-        4. В приложении нажми <b>"+"</b> -> <b>"Импорт из буфера"</b>.
+    <div class="tabs">
+        <div class="tab active" onclick="openTab(event, 'home')">Главная</div>
+        <div class="tab" onclick="openTab(event, 'pay')">Подписка</div>
+        <div class="tab" onclick="openTab(event, 'reviews')">Отзывы</div>
     </div>
 
-    <div class="section-title">Скачать v2rayTun</div>
-    <div class="grid">
-        <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" class="item" target="_blank">🤖 Android</a>
-        <a href="https://apps.apple.com/ru/app/v2raytun/id6476628951" class="item" target="_blank">🍎 iOS</a>
+    <div id="home" class="content active">
+        <h1>DAVAVIPN</h1>
+        
+        <div class="stats-box">
+            <div class="stat-card">
+                <div class="stat-val">124</div>
+                <div class="stat-label">Пользователей</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val">99.9%</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+        </div>
+
+        <div id="vpnKey">vless://02c96700-8461-44b9-bdfa-0572343b5db9@5.129.238.111:443?type=tcp&encryption=none&security=reality&pbk=pdfJ48URQJz1iofF0PyeB1DDIqVto7VPcrz0DuA1bSA&fp=chrome&sni=google.com&sid=12&spx=%2F#MyVPN-ykopj9bg</div>
+        
+        <button class="btn-main" id="copyBtn" onclick="copyKey()">СКОПИРОВАТЬ КЛЮЧ</button>
+        <a href="https://t.me/DAVAVIPN" class="btn-main" target="_blank">КАНАЛ ПРОЕКТА</a>
+
+        <p style="font-size: 12px; color: var(--text-dim);">Установите v2rayTun:</p>
+        <div style="display: flex; gap: 10px;">
+            <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" class="btn-main" style="font-size: 12px; padding: 10px;">Android</a>
+            <a href="https://apps.apple.com/ru/app/v2raytun/id6476628951" class="btn-main" style="font-size: 12px; padding: 10px;">iOS</a>
+        </div>
     </div>
 
-    <div class="donate-box">
-        <div style="font-size: 12px; color: var(--text-dim); margin-bottom: 5px;">Поддержать аренду сервера:</div>
-        <button class="btn-action" id="donateBtn" style="margin-bottom: 10px; padding: 12px;" onclick="copyCard()">ПОДДЕРЖАТЬ ПРОЕКТ</button>
-        <div style="font-size: 10px; color: #444;">Карта: 5599 0021 2717 8178</div>
+    <div id="pay" class="content">
+        <h1>ПОДДЕРЖКА</h1>
+        <p style="text-align: center; color: var(--text-dim); font-size: 13px;">Выберите вариант поддержки сервера</p>
+        
+        <div class="price-card">
+            <h3 style="margin: 0; color: var(--primary-green);">Месяц доступа</h3>
+            <div style="font-size: 24px; margin: 10px 0;">199 ₽</div>
+            <button class="btn-main" onclick="window.open('https://t.me/@O_004')">Оплатить</button>
+        </div>
+
+        <div class="price-card">
+            <h3 style="margin: 0; color: #f1c40f;">Навсегда</h3>
+            <div style="font-size: 24px; margin: 10px 0;">999 ₽</div>
+            <button class="btn-main" onclick="window.open('https://t.me/твой_ник')">Купить</button>
+        </div>
+    </div>
+
+    <div id="reviews" class="content">
+        <h1>ОТЗЫВЫ</h1>
+        <div class="review-form">
+            <div class="star-rating">★★★★★</div>
+            <textarea id="reviewText" placeholder="Напишите ваш отзыв..."></textarea>
+            <button class="btn-main" onclick="sendReview()">Оставить отзыв</button>
+        </div>
+        
+        <div id="reviewsList" style="margin-top: 20px;">
+            <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 10px; margin-bottom: 10px;">
+                <div style="color: #f1c40f; font-size: 12px;">★★★★★</div>
+                <div style="font-size: 13px;">"Все летает, порт 443 открыл и забыл о проблемах!"</div>
+                <div style="font-size: 10px; color: var(--text-dim); margin-top: 5px;">— Admin</div>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
+    function openTab(evt, tabName) {
+        var i, content, tabs;
+        content = document.getElementsByClassName("content");
+        for (i = 0; i < content.length; i++) { content[i].style.display = "none"; }
+        tabs = document.getElementsByClassName("tab");
+        for (i = 0; i < tabs.length; i++) { tabs[i].className = tabs[i].className.replace(" active", ""); }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
     function copyKey() {
         const text = document.getElementById('vpnKey').innerText;
         const btn = document.getElementById('copyBtn');
         navigator.clipboard.writeText(text).then(() => {
-            const oldText = btn.innerText;
-            btn.innerText = 'ГОТОВО, ВСТАВЛЯЙ!';
-            setTimeout(() => { btn.innerText = oldText; }, 2000);
+            btn.innerText = 'ГОТОВО!';
+            setTimeout(() => { btn.innerText = 'СКОПИРОВАТЬ КЛЮЧ'; }, 2000);
         });
     }
 
-    function copyCard() {
-        const cardNumber = '5599002127178178';
-        const btn = document.getElementById('donateBtn');
-        navigator.clipboard.writeText(cardNumber).then(() => {
-            const oldText = btn.innerText;
-            btn.innerText = 'НОМЕР СКОПИРОВАН!';
-            setTimeout(() => { btn.innerText = oldText; }, 2000);
-        });
+    function sendReview() {
+        const text = document.getElementById('reviewText').value;
+        if(text) {
+            alert('Отзыв отправлен на модерацию! Спасибо!');
+            document.getElementById('reviewText').value = '';
+        }
     }
 </script>
 
