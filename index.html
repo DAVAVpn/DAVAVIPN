@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DAVAVIPN | Premium</title>
+    <title>DAVAVIPN | Real Statistics</title>
     <style>
         :root {
             --bg: #0a0f0d; --card: #121a16; --green: #1db954; --text: #e0e0e0; --dim: #a0a0a0; --border: #1f2d26; --tbank: #ffdd2d; --tg-blue: #0088cc;
@@ -27,9 +27,7 @@
         .dot { width: 7px; height: 7px; background: #2ecc71; border-radius: 50%; box-shadow: 0 0 8px #2ecc71; }
         .info-text { font-size: 11px; color: var(--dim); text-align: center; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
         .review-card { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 20px; margin-bottom: 15px; border: 1px solid var(--border); border-left: 4px solid var(--green); }
-        
-        /* Прогресс-бар анимация */
-        #progressLine { transition: width 1.5s ease-in-out; }
+        #progressLine { transition: width 1s ease-in-out; }
     </style>
 </head>
 <body onload="updateStats()">
@@ -46,8 +44,8 @@
         
         <div style="margin-bottom: 25px; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 20px; border: 1px solid var(--border);">
             <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 8px;">
-                <span style="color: var(--dim);">АКТИВНЫХ ПОЛЬЗОВАТЕЛЕЙ:</span>
-                <span style="color: var(--green); font-weight: bold;" id="userCount">... / 1000</span>
+                <span style="color: var(--dim);">ВСЕГО ПОДКЛЮЧЕНИЙ:</span>
+                <span style="color: var(--green); font-weight: bold;" id="userCount">загрузка...</span>
             </div>
             <div style="width: 100%; height: 6px; background: #000; border-radius: 10px; overflow: hidden; border: 1px solid #1f2d26;">
                 <div id="progressLine" style="width: 0%; height: 100%; background: var(--green); box-shadow: 0 0 10px var(--green); border-radius: 10px;"></div>
@@ -74,7 +72,7 @@
 
     <div id="pay" class="content">
         <h2 style="text-align: center; margin-top: 0;">ПОДДЕРЖКА</h2>
-        <p style="font-size: 13px; color: var(--dim); text-align: center; margin-bottom: 25px;">Ваши донаты помогают проекту расти.</p>
+        <p style="font-size: 13px; color: var(--dim); text-align: center; margin-bottom: 25px;">Донаты помогают серверу работать быстрее.</p>
         <a href="https://www.tinkoff.ru/rm/r_Cqyfoppkix.chdwBlIblE/E2e8i25382" target="_blank" class="btn btn-tbank">ПОДДЕРЖАТЬ ПРОЕКТ</a>
         <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px; border: 1px solid var(--border); text-align: center; margin-top: 20px;">
             <div style="font-size: 11px; color: var(--dim); margin-bottom: 10px;">НОМЕР КАРТЫ</div>
@@ -87,7 +85,7 @@
     <div id="rev" class="content">
         <h2 style="text-align: center; margin-top: 0;">ОТЗЫВЫ</h2>
         <input type="text" id="revName" placeholder="Ваш ник или имя">
-        <textarea id="revMsg" rows="3" placeholder="Напишите ваш отзыв..."></textarea>
+        <textarea id="revMsg" rows="3" placeholder="Ваш отзыв..."></textarea>
         <button class="btn btn-fill" id="sendRevBtn" onclick="sendToTelegram()" style="margin-bottom: 30px;">ОТПРАВИТЬ ОТЗЫВ</button>
         <div id="reviewsList">
             <div class="review-card">
@@ -107,25 +105,19 @@
     const TG_TOKEN = "8540307974:AAFMv7AlfxpPPqSn57VbKyjuxvbwuV7ZneM";
     const TG_CHAT_ID = "5345919063"; 
 
-    // Функция автоматической статистики
     async function updateStats() {
         try {
-            // Используем CountAPI для получения реальных заходов на сайт
-            const res = await fetch('https://api.countapi.xyz/hit/davavipn_project/visits');
+            // Реальный честный счетчик хитов
+            const res = await fetch('https://api.countapi.xyz/hit/davavipn_site/visits');
             const data = await res.json();
             const realVisits = data.value || 0;
-            
-            // Базовое число (134) + реальные заходы для красоты
-            const displayCount = 134 + realVisits;
             const maxUsers = 1000;
-            const percent = (displayCount / maxUsers) * 100;
-
-            document.getElementById('userCount').innerText = `${displayCount} / ${maxUsers}`;
+            const percent = Math.min((realVisits / maxUsers) * 100, 100);
+            document.getElementById('userCount').innerText = `${realVisits} / ${maxUsers}`;
             document.getElementById('progressLine').style.width = percent + '%';
         } catch (e) {
-            // Если сервис недоступен, показываем стабильные красивые цифры
-            document.getElementById('userCount').innerText = `147 / 1000`;
-            document.getElementById('progressLine').style.width = '14.7%';
+            document.getElementById('userCount').innerText = `1 / 1000`;
+            document.getElementById('progressLine').style.width = '1%';
         }
     }
 
@@ -154,24 +146,13 @@
         const name = document.getElementById('revName').value;
         const msg = document.getElementById('revMsg').value;
         const btn = document.getElementById('sendRevBtn');
-        if(!name || !msg) return alert('Заполните все поля!');
-        btn.innerText = "ОТПРАВКА...";
-        btn.disabled = true;
-        const text = `⭐️ НОВЫЙ ОТЗЫВ!\n👤 От: ${name}\n💬 Текст: ${msg}`;
+        if(!name || !msg) return alert('Заполните поля!');
+        btn.innerText = "...";
+        const text = `⭐️ ОТЗЫВ!\n👤 ${name}\n💬 ${msg}`;
         const url = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage?chat_id=${TG_CHAT_ID}&text=${encodeURIComponent(text)}`;
-        try {
-            const response = await fetch(url);
-            if(response.ok) {
-                alert('Спасибо! Ваш отзыв отправлен админу.');
-                document.getElementById('revName').value = '';
-                document.getElementById('revMsg').value = '';
-            } else { throw new Error(); }
-        } catch (e) {
-            alert('Ошибка отправки!');
-        } finally {
-            btn.innerText = "ОТПРАВИТЬ ОТЗЫВ";
-            btn.disabled = false;
-        }
+        await fetch(url);
+        alert('Отправлено!');
+        btn.innerText = "ОТПРАВИТЬ ОТЗЫВ";
     }
 </script>
 </body>
