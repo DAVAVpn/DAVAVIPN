@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DAVAVIPN | Premium</title>
+    <title>DAVAVIPN | Premium Access</title>
     <style>
         :root {
-            --bg: #0a0f0d; --card: #121a16; --green: #1db954; --text: #e0e0e0; --dim: #a0a0a0; --border: #1f2d26;
+            --bg: #0a0f0d; --card: #121a16; --green: #1db954; --text: #e0e0e0; --dim: #a0a0a0; --border: #1f2d26; --tbank: #ffdd2d;
         }
-        body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 15px; display: flex; justify-content: center; }
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 15px; display: flex; justify-content: center; }
         .card { background: var(--card); width: 100%; max-width: 400px; border-radius: 30px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         .tabs { display: flex; background: rgba(0,0,0,0.4); padding: 8px; gap: 5px; }
-        .tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; font-size: 10px; font-weight: bold; color: var(--dim); border-radius: 12px; transition: 0.2s; }
+        .tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; font-size: 10px; font-weight: bold; color: var(--dim); border-radius: 12px; transition: 0.2s; text-transform: uppercase; }
         .tab.active { color: white; background: var(--green); }
         .content { padding: 25px; display: none; }
         .content.active { display: block; animation: fadeIn 0.3s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
-        .btn { display: block; width: 100%; padding: 16px; border: 1.5px solid var(--green); color: var(--green); border-radius: 18px; font-weight: bold; text-decoration: none; text-align: center; margin-bottom: 12px; box-sizing: border-box; cursor: pointer; background: none; transition: 0.3s; }
+        .btn { display: block; width: 100%; padding: 16px; border: 1.5px solid var(--green); color: var(--green); border-radius: 18px; font-weight: bold; text-decoration: none; text-align: center; margin-bottom: 12px; box-sizing: border-box; cursor: pointer; background: none; transition: 0.3s; font-size: 14px; }
         .btn-fill { background: var(--green); color: black; border: none; }
+        .btn-tbank { border-color: var(--tbank); color: var(--tbank); }
         .btn:active { transform: scale(0.98); opacity: 0.8; }
         
-        input, textarea { width: 100%; background: #0a0f0d; border: 1px solid var(--border); border-radius: 12px; color: white; padding: 12px; margin-bottom: 10px; box-sizing: border-box; font-family: inherit; }
+        input, textarea { width: 100%; background: #0a0f0d; border: 1px solid var(--border); border-radius: 12px; color: white; padding: 12px; margin-bottom: 10px; box-sizing: border-box; font-family: inherit; font-size: 14px; }
         #vpnKey { display: none; }
         .status { text-align: center; font-size: 11px; color: #2ecc71; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 6px; }
         .dot { width: 7px; height: 7px; background: #2ecc71; border-radius: 50%; box-shadow: 0 0 8px #2ecc71; }
@@ -31,9 +32,9 @@
 
 <div class="card">
     <div class="tabs">
-        <div class="tab active" onclick="openTab(event, 'home')">ГЛАВНАЯ</div>
-        <div class="tab" onclick="openTab(event, 'pay')">ПОДДЕРЖКА</div>
-        <div class="tab" onclick="openTab(event, 'rev')">ОТЗЫВЫ</div>
+        <div class="tab active" onclick="openTab(event, 'home')">Главная</div>
+        <div class="tab" onclick="openTab(event, 'pay')">Поддержка</div>
+        <div class="tab" onclick="openTab(event, 'rev')">Отзывы</div>
     </div>
 
     <div id="home" class="content active">
@@ -43,31 +44,37 @@
         <button class="btn btn-fill" id="copyBtn" onclick="copyKey()">СКОПИРОВАТЬ КЛЮЧ</button>
         
         <div style="margin-top: 25px;">
-            <p style="text-align:center; font-size:11px; color:var(--dim); margin-bottom:10px;">СКАЧАТЬ ПРИЛОЖЕНИЕ</p>
+            <p style="text-align:center; font-size:11px; color:var(--dim); margin-bottom:10px; text-transform: uppercase;">Приложение для подключения:</p>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" target="_blank" class="btn" style="font-size: 11px;">ANDROID</a>
-                <a href="https://apps.apple.com/ru/app/v2raytun/id6476628951" target="_blank" class="btn" style="font-size: 11px;">IOS</a>
+                <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" target="_blank" class="btn" style="font-size: 11px;">ANDROID APP</a>
+                <a href="https://apps.apple.com/ru/app/v2raytun/id6476628951" target="_blank" class="btn" style="font-size: 11px;">IOS APP</a>
             </div>
         </div>
-        <a href="https://t.me/DAVAVIPN" class="btn" style="margin-top:10px; border-color:#333; color:#666;">TELEGRAM КАНАЛ</a>
+        <a href="https://t.me/DAVAVIPN" class="btn" style="margin-top:10px; border-color:#333; color:#666;">ТЕЛЕГРАМ КАНАЛ</a>
     </div>
 
     <div id="pay" class="content">
         <h2 style="text-align: center; margin-top: 0;">ПОДДЕРЖКА</h2>
-        <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px; border: 1px solid var(--border); text-align: center;">
-            <div style="font-size: 11px; color: var(--dim); margin-bottom: 10px;">ПЕРЕВОД НА КАРТУ (РФ)</div>
+        <p style="font-size: 13px; color: var(--dim); text-align: center; margin-bottom: 25px;">Для продления доступа или доната проекту воспользуйтесь быстрой оплатой:</p>
+        
+        <a href="https://www.tinkoff.ru/rm/r_Cqyfoppkix.chdwBlIblE/E2e8i25382" target="_blank" class="btn btn-tbank">ОПЛАТИТЬ (СБП / Т-БАНК)</a>
+
+        <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px; border: 1px solid var(--border); text-align: center; margin-top: 20px;">
+            <div style="font-size: 11px; color: var(--dim); margin-bottom: 10px;">НОМЕР КАРТЫ (ДЛЯ ПЕРЕВОДА)</div>
             <div style="font-weight: bold; font-size: 16px; margin-bottom: 20px; color: var(--green);">5599 0021 2717 8178</div>
-            <button class="btn btn-fill" style="margin:0;" onclick="copyCard()">СКОПИРОВАТЬ НОМЕР</button>
+            <button class="btn btn-fill" style="margin:0; padding: 12px; font-size: 12px;" onclick="copyCard()">КОПИРОВАТЬ НОМЕР</button>
         </div>
-        <p style="text-align: center; font-size: 11px; color: var(--dim); margin-top: 20px;">Для получения VIP статуса напишите админу:</p>
-        <a href="https://t.me/O_004" class="btn">ПОДТВЕРДИТЬ (@O_004)</a>
+        
+        <p style="text-align: center; font-size: 11px; color: var(--dim); margin-top: 20px;">Обязательно пришлите скриншот чека:</p>
+        <a href="https://t.me/O_004" class="btn" style="border-color: #0088cc; color: #0088cc;">ПОДТВЕРДИТЬ ОПЛАТУ (@O_004)</a>
     </div>
 
     <div id="rev" class="content">
         <h2 style="text-align: center; margin-top: 0;">ОТЗЫВЫ</h2>
-        <input type="text" id="revName" placeholder="Ваш ник/имя">
-        <textarea id="revMsg" rows="5" placeholder="Ваш отзыв о работе VPN..."></textarea>
-        <button class="btn btn-fill" id="sendRevBtn" onclick="sendToTelegram()">ОТПРАВИТЬ АДМИНУ</button>
+        <p style="font-size: 12px; color: var(--dim); text-align: center; margin-bottom: 20px;">Ваше сообщение придет лично админу в Telegram</p>
+        <input type="text" id="revName" placeholder="Ваш ник или имя">
+        <textarea id="revMsg" rows="5" placeholder="Напишите пару слов о работе VPN..."></textarea>
+        <button class="btn btn-fill" id="sendRevBtn" onclick="sendToTelegram()">ОТПРАВИТЬ ОТЗЫВ</button>
     </div>
 </div>
 
@@ -87,7 +94,7 @@
     function copyKey() {
         navigator.clipboard.writeText(document.getElementById('vpnKey').innerText);
         const b = document.getElementById('copyBtn');
-        b.innerText = 'СКОПИРОВАНО!';
+        b.innerText = 'ГОТОВО!';
         setTimeout(() => b.innerText = 'СКОПИРОВАТЬ КЛЮЧ', 2000);
     }
 
@@ -110,12 +117,14 @@
         const url = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage?chat_id=${TG_CHAT_ID}&text=${encodeURIComponent(text)}`;
 
         try {
-            await fetch(url);
-            alert('Спасибо! Ваш отзыв отправлен админу @O_004');
-            document.getElementById('revName').value = '';
-            document.getElementById('revMsg').value = '';
+            const response = await fetch(url);
+            if(response.ok) {
+                alert('Спасибо! Ваш отзыв доставлен админу @O_004');
+                document.getElementById('revName').value = '';
+                document.getElementById('revMsg').value = '';
+            } else { throw new Error(); }
         } catch (e) {
-            alert('Ошибка! Бот не запущен или нет сети.');
+            alert('Ошибка! Убедитесь, что вы запустили бота в Telegram.');
         } finally {
             btn.innerText = "ОТПРАВИТЬ АДМИНУ";
             btn.disabled = false;
